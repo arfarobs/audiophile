@@ -21,7 +21,7 @@ const Cart = () => {
 	const { total } = calculateCost(cart);
 
 	return (
-		<section className={styles.cart}>
+		<section className={styles.cart} data-testid="cart">
 
 			<div className={styles.top}>
 				<h2 className='heading-6'>{`cart (${cart.length})`}</h2>
