@@ -13,7 +13,7 @@ import Button from '../common/button/Button';
 
 const Banner = () => {
 	return (
-		<section className={styles.banner}>
+		<section className={styles.banner} data-testid="banner">
 			<picture className={styles.picture}>
 				<source media='(min-width: 1440px)' srcSet={desktopBannerImage} />
 				<source media='(min-width: 768px)' srcSet={tabletBannerImage}/>
