@@ -1,0 +1,43 @@
+.product {
+	width: 120px;
+	height: 48px;
+	background: var(--gray-white);
+	display: flex;
+}
+
+.cart {
+	width: 96px;
+	height: 32px;
+	background: var(--gray-white);
+	display: flex;
+}
+
+.incrementBtn, .quantity {
+	font-weight: 700;
+	font-size: 13px;
+	line-height: 18px;
+	color: var(--pure-black);
+	width: 33.3%;
+	background: none;
+	text-align: center;
+}
+
+.incrementBtn {
+	opacity: 0.25;
+	transition: all 0.2 ease;
+}
+
+.quantity {
+	margin: auto 0;
+}
+
+.incrementBtn:focus-visible, .incrementBtn:active {
+	color: var(--dark-orange);
+}
+
+@media only screen and (min-width: 1440px) {
+	.incrementBtn:hover {
+		cursor: pointer;
+		color: var(--dark-orange);
+	}
+}

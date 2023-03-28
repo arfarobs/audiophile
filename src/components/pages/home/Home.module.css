@@ -1,0 +1,208 @@
+.section {
+	margin: 24px var(--side);
+}
+
+.zx7, .yx1 {
+	color: var(--pure-black);
+}
+
+.h3 {
+	margin-bottom: 32px;
+}
+
+/*ZX9 */
+
+.zx9 {
+	background: var(--dark-orange) 50% -121px/558px 558px no-repeat url('../../../assets/images/home/desktop/pattern-circles.svg');
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0 24px;
+	text-align: center;
+	color: var(--pure-white);
+}
+
+.zx9Picture {
+	margin-top: 55px;
+}
+
+.zx9Img {
+	width: auto;
+	height: 200px;
+}
+
+.zx9Text {
+	margin: 38px 0 55px;
+}
+
+.zx9P {
+	margin: 24px 0;
+	max-width: 349px;
+	opacity: 0.75;
+}
+
+
+
+
+
+/*ZX7 */
+
+.zx7 {
+	display: grid;
+	grid-template: 101px 118px 101px / 100%;
+}
+
+.zx7Picture {
+	z-index: -1;
+	grid-area: 1 / 1 / 4 / 2;
+	width: 100%;
+	height: 320px;
+	overflow: hidden;
+}
+
+.zx7Img {
+	min-width: 327px;
+	max-width: 100%;
+	display: block;
+	height: auto;
+}
+
+.zx7Text {
+	margin-left: 24px;
+	grid-area: 2 / 1 / 3 / 2;
+}
+
+
+
+
+
+/*YX1 Earphones*/
+
+.yx1Picture {
+	display: block;
+}
+
+.yx1Img {
+	width: 100%;
+}
+
+.yx1Text {
+	margin-top: 24px;
+	background: var(--gray-white);
+	padding: 41px 24px;
+}
+
+
+@media only screen and (min-width: 550px) and (max-width: 768px) {
+	.zx7Img {
+		min-width: none;
+		max-width: none;
+		width: auto;
+		height: 100%;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.section {
+		margin: 32px var(--side);
+	}
+
+	/*ZX9*/
+	.zx9 {
+		padding: 0;
+		background-size: 944px 944px;
+		background-position: 50% -288px;
+	}
+
+	.zx9Picture {
+		margin-top: 52px;
+	}
+
+	.zx9Img {
+		height: 237px;
+	}
+
+	.zx9Text {
+		margin: 64px 0;
+	}
+
+	.zx9P {
+		margin: 24px 0 40px;
+	}
+
+
+	/*ZX7*/
+
+	.zx7Img {
+		min-width: 100%;
+	}
+
+	.zx7Text {
+		margin-left: 62px;
+	}
+
+
+	/*YX1*/
+
+	.yx1 {
+		display: flex;
+	}
+
+	.yx1Picture {
+		width: 50%;
+	}
+
+	.yx1Text {
+		margin: 0;
+		padding: 0 10px 0 0;
+		width: 50%;
+		margin-left: 1.59%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+@media only screen and (min-width: 1440px) {
+	.section {
+		margin: 48px var(--side);
+	}
+
+	/*ZX9*/
+
+	.zx9 {
+		flex-direction: row;
+		text-align: left;
+		justify-content: space-between;
+		height: 560px;
+		align-items: flex-start;
+		background-position: calc(-169px + 12.7%) -36px;
+	}
+
+	.zx9Picture {
+		margin: 115px 0 0 12.7%;
+	}
+
+	.zx9Img {
+		height: 457px;
+	}
+
+	.zx9Text {
+		margin: 113px 8.6% 0 0;
+	}
+
+	/*ZX7*/
+
+	.zx7Text {
+		margin-left: 8.6%;
+	}
+
+	/*YX1*/
+
+	.yx1Text {
+		margin-left: 2.7%;
+		padding: 0 0 0 8.6%;
+		align-items: flex-start;
+	}
+}

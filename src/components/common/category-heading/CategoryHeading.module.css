@@ -1,0 +1,30 @@
+.categoryHeading {
+	background: var(--pure-black);
+	padding: 32px 0;
+}
+
+.heading {
+	text-align: center;
+	letter-spacing: 2px;
+	color: var(--pure-white);
+}
+
+.headerBackground {
+	width: 100%;
+	height: 90px;
+	background: var(--pure-black);
+	position: absolute;
+	top: -90px;
+}
+
+@media only screen and (min-width: 768px) {
+	.categoryHeading {
+		padding: 105px 0 97px;
+	}
+}
+
+@media only screen and (min-width: 1440px) {
+	.categoryHeading {
+		padding: 97px 0;
+	}
+}

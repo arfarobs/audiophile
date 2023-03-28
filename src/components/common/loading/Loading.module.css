@@ -1,0 +1,35 @@
+.section {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 3;
+	width: 100%;
+}
+
+.loading {
+	background: var(--pure-white);
+	height: 100vh;
+}
+
+.submit {
+	position: fixed;
+	top: 0;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.4);
+}
+
+.img {
+	animation: rotation 2s infinite linear;
+	margin-bottom: 32px;
+}
+
+@keyframes rotation {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+

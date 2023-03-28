@@ -1,0 +1,25 @@
+.section {
+	--spacing: 24px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 3;
+	background: var(--pure-white);
+	width: calc(100% - (var(--side) * 2));
+	border-radius: 8px;
+	padding: var(--spacing);
+	max-width: 540px;
+	text-align: center;
+}
+
+.message {
+	margin: var(--spacing) 0;
+	opacity: 0.5;
+}
+
+@media only screen and (min-width: 768px) {
+	.section {
+		--spacing: 32px;
+	}
+}

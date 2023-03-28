@@ -1,0 +1,43 @@
+.list li:not(:last-child) {
+	margin-bottom: 20px;
+}
+
+.image {
+	width: 100%;
+}
+
+
+@media only screen and (min-width: 768px) {
+	.list {
+		display: grid;
+		grid-template: 1fr 1fr / 41.5% 58.5%;
+		grid-gap: 20px 18px;
+		align-items: stretch;
+	}
+
+	.list li:not(:last-child) {
+		margin: 0;
+	}
+
+	.li0 {
+		grid-area: 1 / 1 / 2 / 2;
+	}
+
+	.li1 {
+		grid-area: 2 / 1 / 3 / 2;
+	}
+
+	.li2 {
+		grid-area: 1 / 2 / 3 / 3;
+	}
+
+	.picture, .image {
+		height: 100%;
+	}
+}
+
+@media only screen and (min-width: 1440px) {
+	.list {
+		grid-gap: 32px 30px;
+	}
+}

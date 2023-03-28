@@ -1,0 +1,159 @@
+:root {
+	/*Colors*/
+	--dark-orange: #D87D4A;
+	--light-orange: #FBAF85;
+	--pure-black: #000;
+	--banner-black: #0C0C0C;
+	--lighter-black: #101010;
+	--button-active-black: #4c4c4c;
+	--pure-white: #FFF;
+	--darker-white: #FAFAFA;
+	--gray-white: #F1F1F1;	
+
+	/*Sizes*/
+	--side: 6.4%;
+
+	/*Filters*/
+	--dark-orange-filter: brightness(0) saturate(100%) invert(60%) sepia(88%) saturate(687%) hue-rotate(326deg) brightness(90%) contrast(86%);
+}
+
+@font-face {
+	font-family: 'Manrope';
+	src: url('./assets/fonts/Manrope-Bold.ttf');
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Manrope';
+	src: url('./assets/fonts/Manrope-Medium.ttf');
+	font-weight: 500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Manrope';
+	src: url('./assets/fonts/Manrope-Regular.ttf');
+	font-weight: 400;
+	font-display: swap;
+}
+
+
+/*Global Styles*/
+
+* {
+	box-sizing: border-box !important;
+	font-family: 'Manrope', sans-serif !important;
+	font-style: normal;
+}
+
+a {
+	text-decoration: none;
+	font-family: 'Manrope', sans-serif;
+	color: inherit;
+}
+
+button {
+	border: none;
+	color: unset;
+}
+
+.radius, .picture-radius {
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.picture-radius {
+	display: block;
+}
+
+.title-span {
+	display: block;
+}
+
+/*Typography*/
+
+h1, h2, h3, h4, h5, .new-product {
+	text-transform: uppercase;
+}
+
+.heading-1, .heading-2, .heading-3, .heading-4, .heading-6 {
+	font-weight: 700;
+}
+
+.heading-1 {
+	font-size: 36px;
+	line-height: 40px;
+	letter-spacing: 1.28571px;
+}
+
+.heading-2, .heading-3, .heading-4 {
+	font-size: 28px;
+	line-height: 38px;
+}
+
+.heading-3 {
+	letter-spacing: 1px;
+}
+
+.heading-4 {
+	letter-spacing: 2px;
+}
+
+.heading-6 {
+	font-size: 18px;
+	letter-spacing: 1.28571px;
+	line-height: 25px;
+}
+
+.paragraph {
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 25px;
+}
+
+.new-product {
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 19px;
+	letter-spacing: 10px;
+}
+
+
+@media only screen and (min-width: 768px) {
+
+	:root {
+		--side: 5.2%;
+	}
+
+	/*Typography*/
+
+	.heading-1 {
+		font-size: 56px;
+		line-height: 58px;
+		letter-spacing: 2px;
+	}
+
+	.heading-2 {
+		font-size: 40px;
+		line-height: 44px;
+		letter-spacing: 1.42857px;
+	}
+
+	.heading-3 {
+		line-height: 32px;
+	}
+
+}
+
+@media only screen and (min-width: 1440px) {
+	:root {
+		--side: 11.46%;
+	}
+
+	.heading-3 {
+		font-size: 40px;
+		line-height: 44px;
+		letter-spacing: 1.42857px;
+	}
+}
