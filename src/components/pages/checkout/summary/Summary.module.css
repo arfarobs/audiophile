@@ -1,0 +1,97 @@
+.section {
+	padding: 32px 24px;
+	border-radius: 8px;
+	background: var(--pure-white);
+}
+
+.h2, .totalRight, .grandTotal, .submit {
+	font-weight: 700;
+}
+
+.h2, .totalLeft, .totalRight, .grandTotal {
+	line-height: 25px;
+}
+
+.h2, .totalRight, .grandTotal {
+	font-size: 18px;
+}
+
+.quantity, .totalLeft {
+	font-size: 15px;
+}
+
+.h2 {
+	letter-spacing: 1.28571px;
+	margin-bottom: 31px;
+}
+
+.totalBreakdown {
+	margin: 32px 0 24px;
+}
+
+.totalContainer, .grandTotalContainer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.totalContainer:not(:last-child) {
+	margin-bottom: 8px;
+}
+
+.totalLeft {
+	font-weight: 500;
+	opacity: 0.5;
+	text-transform: uppercase;
+}
+
+.totalRight {
+	text-align: right;
+	text-transform: uppercase;
+}
+
+
+.grandTotal {
+	text-align: right;
+	text-transform: uppercase;
+	color: var(--dark-orange);
+}
+
+.submit {
+	margin-top: 32px;
+	border: none;
+	width: 100%;
+	background: var(--dark-orange);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 48px;
+	font-size: 13px;
+	line-height: 18px;
+	text-align: center;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	color: var(--pure-white);
+	transition: all 0.2s ease;
+}
+
+.submit:focus-visible, .submit:active {
+	background: var(--light-orange);
+}
+
+@media only screen and (min-width: 768px) {
+	.section {
+		padding: 32px 33px;
+	}
+}
+
+@media only screen and (min-width: 1440px) {
+	.section {
+		width: 31.5%;
+	}
+
+	.submit:hover {
+		background: var(--light-orange);
+		cursor: pointer;
+	}
+}

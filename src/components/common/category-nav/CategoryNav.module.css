@@ -1,0 +1,35 @@
+.categoryNav {
+	font-weight: 700;
+}
+
+.page {
+	margin: 40px 24px 120px;
+	position: relative;
+}
+
+.menu {
+	padding: 32px 24px 35px;
+	background: var(--pure-white);
+	margin: 0;
+}
+
+@media only screen and (min-width: 768px) {
+	.page {
+		margin: 96px var(--side);
+	}
+
+	.menu {
+		padding: 56px var(--side) 67px;
+	}
+
+	.list {
+		display: flex;
+		justify-content: space-between;
+	}
+}
+
+@media only screen and (min-width: 1440px) {
+	.page {
+		margin: 120px var(--side) 168px;
+	}
+}

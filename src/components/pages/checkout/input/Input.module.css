@@ -1,0 +1,118 @@
+.label, .input, .input::placeholder, .radioLabel {
+	font-weight: 700;
+}
+
+.label, .errorMessage {
+	line-height: 16px;
+	letter-spacing: -0.214286px;
+	font-size: 12px;
+}
+
+.input, .input::placeholder, .radioLabel {
+	font-size: 14px;
+	line-height: 19px;
+	letter-spacing: -0.25px;
+}
+
+
+
+.label {
+	display: flex;
+	flex-direction: column;
+	color: var(--pure-black);
+	position: relative;
+}
+
+.label:not(:last-child) {
+	margin-bottom: 24px;
+}
+
+.invalidLabel {
+	color: #CD2C2C !important;
+}
+
+.errorMessage {
+	position: absolute;
+	right: 0;
+	font-weight: 500;
+	color: #CD2C2C;
+}
+
+.input {
+	margin-top: 9px;
+	padding: 17.5px 24px;
+	border: 1px solid #CFCFCF;
+	border-radius: 8px;
+	height: 56px;
+}
+
+.input::placeholder {
+	opacity: 0.4;
+}
+
+.input:active, input:focus-visible {
+	border: 1px solid var(--dark-orange);
+	outline: none;
+	caret-color: var(--dark-orange);
+	background: none;
+}
+
+.invalidInput {
+	border: 2px solid #CD2C2C;
+}
+
+.radio {
+  appearance: none;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border: 1px solid #CFCFCF;
+  border-radius: 50%;
+  position: relative;
+  vertical-align: middle;
+  margin-right: 16px;
+}
+
+.radio:after {
+  content: "";
+  display: block;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: var(--dark-orange);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+	transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+
+.radio:checked:after {
+  opacity: 1;
+}
+
+@media only screen and (min-width: 768px) {
+	.label {
+		width: 48.7%;
+	}
+
+	.address {
+		width: 100%;
+	}
+
+	.eNumber {
+		margin: 0 !important;
+	}
+}
+
+@media only screen and (min-width: 1440px) {
+	.input:hover {
+		border: 1px solid var(--dark-orange);
+		outline: none;
+	}
+
+	.radio, .radioLabel {
+		cursor: pointer;
+	}
+}

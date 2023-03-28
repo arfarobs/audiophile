@@ -1,0 +1,4 @@
+.article {
+	padding: 0 var(--side);
+	color: var(--pure-black);
+}

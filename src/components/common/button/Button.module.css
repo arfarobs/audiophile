@@ -1,0 +1,108 @@
+.button1, .goBack {
+	transition: all 0.2s ease;
+}
+
+.button1, .button2 {
+	font-weight: 700;
+	font-size: 13px;
+	line-height: 18px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	padding: 15px 0;
+	display: inline-block;
+	height: 48px;
+	text-align: center;
+}
+
+.button1 {
+	width: 160px;
+}
+
+.button2 {
+	width: 100%;
+}
+
+.goBack {
+	margin: 16px 0 24px;
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 25px;
+	color: var(--pure-black);
+	opacity: 0.5;
+	background: none;
+	display: inline-block;
+	height: 25px;
+}
+
+.orange {
+	color: var(--pure-white);
+	background: var(--dark-orange);
+}
+
+.black {
+	color: var(--pure-white);
+	background: var(--pure-black);
+}
+
+.opaque {
+	color: var(--pure-black);
+	border: 1px solid var(--pure-black);
+}
+
+.orange:focus-visible, .orange:active {
+	background: var(--light-orange);
+}
+
+.black:focus-visible, .black:active {
+	background: var(--button-active-black);
+	color: var(--pure-white);
+}
+
+.opaque:focus-visible, .opaque:active {
+	background: var(--pure-black);
+	color: var(--pure-white);
+}
+
+.goBack:focus-visible, .goBack:active {
+	color: var(--dark-orange);
+	background: none;
+	opacity: 1;
+}
+
+
+
+@media only screen and (min-width: 768px) {
+	.goBack {
+		margin: 33px 0 24px;
+	}
+}
+
+@media only screen and (min-width: 1440px) {
+	.button1, .goBack {
+		cursor: pointer;
+	}
+
+	.orange:hover {
+		background: var(--light-orange);
+	}
+
+	.black:hover {
+		background: var(--button-active-black);
+		color: var(--pure-white);
+	}
+
+	.opaque:hover {
+		background: var(--pure-black);
+		color: var(--pure-white);
+	}
+
+	.goBack, .checkoutGoBack {
+		margin: 79px 0 56px;
+	}
+
+	.goBack:hover {
+		color: var(--dark-orange);
+		background: none;
+		opacity: 1;
+	}
+}
