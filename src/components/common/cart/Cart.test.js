@@ -10,26 +10,26 @@ import { toggleCartIsOpen } from '../../../store/uiSlice';
 const mockStore = configureStore();
 
 const renderCart = (cartItems = []) => {
-  const store = mockStore({
-    cart: {
-      cart: cartItems,
-    },
-    ui: {},
+	const store = mockStore({
+		cart: {
+			cart: cartItems,
+		},
+		ui: {},
 		product: {
 			productQuantity: 1
 		}
-  });
+	});
 
-  store.dispatch = jest.fn();
+	store.dispatch = jest.fn();
 
-  return {
-    ...render(
-      <Provider store={store}>
-        <Cart />
-      </Provider>, {wrapper: MemoryRouter}
-    ),
-    store,
-  };
+	return {
+		...render(
+			<Provider store={store}>
+				<Cart />
+			</Provider>, {wrapper: MemoryRouter}
+		),
+		store,
+	};
 };
 
 describe('cart component', () => {
@@ -42,7 +42,7 @@ describe('cart component', () => {
 	});
 
 	it('renders Remove all and checkout btns when there is something in the cart', () => {
-		renderCart([{productName: "test"}]);
+		renderCart([{productName: 'test'}]);
 
 		const removeAllBtn = screen.getByText(/Remove all/i);
 		const checkoutBtn = screen.getByText(/checkout/i);
@@ -63,7 +63,7 @@ describe('cart component', () => {
 
 	it('dispatches the removeAll action when the button is clicked', async () => {
 		const user = userEvent.setup();
-		const { store } = renderCart([{productName: "product 1"}, {productName: "product 2"}]);
+		const { store } = renderCart([{productName: 'product 1'}, {productName: 'product 2'}]);
 		const removeAllBtn = screen.getByText(/Remove all/i);
 		
 		await user.click(removeAllBtn);
@@ -73,7 +73,7 @@ describe('cart component', () => {
 
 	it('dispatches the toggleCartIsOpen action when the checkout btn is clicked', async () => {
 		const user = userEvent.setup();
-		const { store } = renderCart([{productName: "product 1"}, {productName: "product 2"}]);
+		const { store } = renderCart([{productName: 'product 1'}, {productName: 'product 2'}]);
 		const checkoutBtn = screen.getByText(/checkout/i);
 
 		await user.click(checkoutBtn);
@@ -84,12 +84,12 @@ describe('cart component', () => {
 	it('calculates the cost and displays it properly', () => {
 		const cartItems = [
 			{
-				productName: "item 1",
+				productName: 'item 1',
 				price: 10,
 				quantity: 2
 			},
 			{
-				productName: "item 2",
+				productName: 'item 2',
 				price: 80,
 				quantity: 5
 			}

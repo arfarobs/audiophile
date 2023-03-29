@@ -29,26 +29,26 @@ const mockCartItems = [
 ];
 
 const renderCartItems = (cartItems = [], props = {}) => {
-  const store = mockStore({
-    cart: {
-      cart: cartItems,
-    },
-    ui: {},
+	const store = mockStore({
+		cart: {
+			cart: cartItems,
+		},
+		ui: {},
 		product: {
 			productQuantity: 1
 		}
-  });
+	});
 
-  store.dispatch = jest.fn();
+	store.dispatch = jest.fn();
 
-  return {
-    ...render(
-      <Provider store={store}>
-        <CartItems where={props.where} confirmationCart={props.confirmationCart} />
-      </Provider>, {wrapper: MemoryRouter}
-    ),
-    store,
-  };
+	return {
+		...render(
+			<Provider store={store}>
+				<CartItems where={props.where} confirmationCart={props.confirmationCart} />
+			</Provider>, {wrapper: MemoryRouter}
+		),
+		store,
+	};
 };
 
 describe('CartItems component', () => {
@@ -60,7 +60,7 @@ describe('CartItems component', () => {
 	});
 
 	it('renders the correct elements when where prop is "cart"', () => {
-		renderCartItems(mockCartItems, {where: "cart"});
+		renderCartItems(mockCartItems, {where: 'cart'});
 
 		const list = screen.getByRole('list');
 		expect(list).toHaveClass('cart');
@@ -105,7 +105,7 @@ describe('CartItems component', () => {
 	});
 
 	it('renders the correct elements when where prop is "confirmation"', () => {
-		renderCartItems(mockCartItems, {where: "confirmation"});
+		renderCartItems(mockCartItems, {where: 'confirmation'});
 
 		const list = screen.getByRole('list');
 		expect(list).toHaveClass('confirmation');
@@ -133,7 +133,7 @@ describe('CartItems component', () => {
 			if (index === 0) {
 				expect(lineDiv).toHaveClass('line');
 			} else {
-				expect(lineDiv).toHaveClass('hidden')
+				expect(lineDiv).toHaveClass('hidden');
 			}
 		});
 
@@ -191,7 +191,7 @@ describe('CartItems component', () => {
 	});
 
 	it('renders the correct cart items with their respective information', () => {
-		renderCartItems(mockCartItems, {where: "cart"});
+		renderCartItems(mockCartItems, {where: 'cart'});
 		
 		const images = screen.getAllByRole('img');
 		images.forEach((image, index) => {
@@ -212,14 +212,14 @@ describe('CartItems component', () => {
 	});
 
 	it('renders the empty cart message when where = "cart" and cart is empty', () => {
-		renderCartItems([], {where: "cart"});
+		renderCartItems([], {where: 'cart'});
 
 		const emptyCartMessage = screen.getByText('Oh no! It looks like your cart is empty.');
 		expect(emptyCartMessage).toBeInTheDocument();
 	});
 
 	it('does not render the empty cart message when where = "confirmation" and cart is empty', () => {
-		renderCartItems([], {where: "confirmation"});
+		renderCartItems([], {where: 'confirmation'});
 
 		const emptyCartMessage = screen.queryByText('Oh no! It looks like your cart is empty.');
 		expect(emptyCartMessage).not.toBeInTheDocument();
@@ -233,7 +233,7 @@ describe('CartItems component', () => {
 	});
 
 	it('does not render the otherItemsBtn when cart only has one item', () => {
-		renderCartItems([mockCartItems[0]], {where: "confirmation"});
+		renderCartItems([mockCartItems[0]], {where: 'confirmation'});
 
 		const otherItemsButton = screen.queryByTestId('otherItemsButton');
 		expect(otherItemsButton).not.toBeInTheDocument();
@@ -241,7 +241,7 @@ describe('CartItems component', () => {
 
 	it('displays hidden items when the otherItemsBtn is clicked and hides them when clicked again', async () => {
 		const user = userEvent.setup();
-		renderCartItems(mockCartItems, {where: "confirmation"});
+		renderCartItems(mockCartItems, {where: 'confirmation'});
 
 		const otherItemsButton = screen.getByTestId('otherItemsButton');
 		const items = screen.getAllByTestId('outerListItemDiv');
@@ -259,16 +259,16 @@ describe('CartItems component', () => {
 			}
 		});
 
-		await userEvent.click(otherItemsButton);
+		await user.click(otherItemsButton);
 
-		items.forEach((item, index) => {
+		items.forEach((item) => {
 			expect(item).toHaveClass('confItem');
 			expect(item).not.toHaveClass('notConfItem');
 			expect(item).toHaveClass('item');
 			expect(item).not.toHaveClass('hidden');
 		});
 
-		await userEvent.click(otherItemsButton);
+		await user.click(otherItemsButton);
 
 		items.forEach((item, index) => {
 			expect(item).toHaveClass('confItem');
@@ -282,4 +282,4 @@ describe('CartItems component', () => {
 			}
 		});
 	});
-})
+});
