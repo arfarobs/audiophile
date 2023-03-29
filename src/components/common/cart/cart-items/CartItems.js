@@ -47,7 +47,7 @@ const CartItems = ({where, confirmationCart}) => {
 										: <p 
 											className={classNames(styles.quantity, {[styles.marginTop] : where !== 'confirmation'})}
 											data-testid="quantityParagraph"
-											>
+										>
 											{`x ${quantity}`}
 										</p>
 								}
@@ -57,7 +57,7 @@ const CartItems = ({where, confirmationCart}) => {
 								<div 
 									className={index > 0 && hidden === true && where === 'confirmation' ? styles.hidden : styles.line}
 									data-testid="lineDiv"
-									>
+								>
 								</div>
 							}
 						</li>
@@ -77,10 +77,10 @@ const CartItems = ({where, confirmationCart}) => {
 					className={styles.otherItems} 
 					onClick={() => setHidden(!hidden)}
 					data-testid="otherItemsButton"
-					>
+				>
 					{hidden ? `and ${cart.length} other item(s)` : 'View less'}
 				</button>
-			)
+			);
 		}
 	};
 
