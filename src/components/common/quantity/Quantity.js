@@ -26,7 +26,7 @@ const Quantity = ({where, productName, cartQuantity}) => {
 	}, [location, dispatch, where]);
 
 	return (
-		<div className={styles[where]}>
+		<div className={styles[where]} data-testid="quantityWrapper">
 			<button 
 				className={styles.incrementBtn} 
 				onClick={() => where === 'cart' ? dispatch(handleCartQuantity({productName: productName, direction: 'down'})) : dispatch(handleProductQuantity('down'))}

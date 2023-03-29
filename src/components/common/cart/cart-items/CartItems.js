@@ -24,6 +24,7 @@ const CartItems = ({where, confirmationCart}) => {
 									index > 0 && hidden === true && where === 'confirmation' ? styles.hidden : styles.item,
 									where === 'confirmation' ? styles.confItem : styles.notConfItem,
 								)} 
+								data-testid="outerListItemDiv"
 							>
 								<div className={styles.info}>
 									<img 
@@ -41,10 +42,12 @@ const CartItems = ({where, confirmationCart}) => {
 										? <Quantity 
 											where="cart" 
 											cartQuantity={quantity} 
-											productName={productName} 
+											productName={productName}
 										/>
 										: <p 
-											className={classNames(styles.quantity, {[styles.marginTop] : where !== 'confirmation'})}>
+											className={classNames(styles.quantity, {[styles.marginTop] : where !== 'confirmation'})}
+											data-testid="quantityParagraph"
+											>
 											{`x ${quantity}`}
 										</p>
 								}
@@ -52,7 +55,9 @@ const CartItems = ({where, confirmationCart}) => {
 							{
 								where === 'confirmation' && cart.length > 1 &&
 								<div 
-									className={index > 0 && hidden === true && where === 'confirmation' ? styles.hidden : styles.line}>
+									className={index > 0 && hidden === true && where === 'confirmation' ? styles.hidden : styles.line}
+									data-testid="lineDiv"
+									>
 								</div>
 							}
 						</li>
@@ -67,13 +72,24 @@ const CartItems = ({where, confirmationCart}) => {
 
 	const confirmationBtn = () => {
 		if (where === 'confirmation' && cart.length > 1) {
-			return <button className={styles.otherItems} onClick={() => setHidden(!hidden)}>{hidden ? `and ${cart.length} other item(s)` : 'View less'}</button>;
+			return (
+				<button 
+					className={styles.otherItems} 
+					onClick={() => setHidden(!hidden)}
+					data-testid="otherItemsButton"
+					>
+					{hidden ? `and ${cart.length} other item(s)` : 'View less'}
+				</button>
+			)
 		}
 	};
 
 
 	return (
-		<div className={classNames({[styles.confirmationFlex]: where === 'confirmation'})}>
+		<div 
+			className={classNames({[styles.confirmationFlex]: where === 'confirmation'})} 
+			data-testid="cartItemsDiv"
+		>
 			{cartList()}
 			{confirmationBtn()}
 		</div>
