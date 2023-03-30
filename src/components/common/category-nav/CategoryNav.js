@@ -16,18 +16,16 @@ import NavItem from '../nav-item/NavItem';
 const CategoryNav = ({where, links}) => {
 	const dispatch = useDispatch();
 
-	const handleClick = () => {
-		if (where === 'menu') {
-			dispatch(toggleMenuIsOpen());
-		}
-	};
-
 	return (
 		<nav className={classNames(styles.categoryNav, styles[where])} >
 			<ul className={styles.list}>
 
 				{links.map(link => (
-					<NavItem link={link} key={link.title} handleClick={handleClick} />
+					<NavItem 
+						link={link} 
+						key={link.title} 
+						handleClick={where === 'menu' ? () => dispatch(toggleMenuIsOpen()) : undefined} 
+					/>
 				))}
 
 			</ul>

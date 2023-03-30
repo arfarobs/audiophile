@@ -34,7 +34,7 @@ const NavItem = ({link: {to, title, thumbnail}, handleClick}) => {
 };
 
 NavItem.propTypes = {
-	handleClick: PropTypes.func.isRequired,
+	handleClick: PropTypes.func,
 	link: PropTypes.shape({
 		to: PropTypes.string.isRequired,
 		title: PropTypes.string.isRequired,

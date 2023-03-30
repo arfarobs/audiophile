@@ -39,15 +39,12 @@ const renderCartItems = (cartItems = [], props = {}) => {
 		}
 	});
 
-	store.dispatch = jest.fn();
-
 	return {
 		...render(
 			<Provider store={store}>
-				<CartItems where={props.where} confirmationCart={props.confirmationCart} />
+				<CartItems {...props} />
 			</Provider>, {wrapper: MemoryRouter}
-		),
-		store,
+		)
 	};
 };
 
