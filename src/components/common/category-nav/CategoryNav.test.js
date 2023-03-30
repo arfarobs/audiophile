@@ -27,8 +27,8 @@ const renderCategoryNav = (props = {}) => {
 			</Provider>, {wrapper: MemoryRouter}
 		), 
 		store
-	}
-}
+	};
+};
 
 describe('CategoryNav', () => {
 	it('renders CategoryNav component', () => {
@@ -71,5 +71,5 @@ describe('CategoryNav', () => {
 		await user.click(navItem);
 
 		expect(store.dispatch).toHaveBeenCalledWith(toggleMenuIsOpen());
-  });
+	});
 });
