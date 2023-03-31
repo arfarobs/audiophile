@@ -32,7 +32,7 @@ const Header = ({links, links: [homeLink, ...categoryLinks]}) => {
 		cartIsOpen && dispatch(toggleCartIsOpen());
 	};
 
-	const handleBtnClick = (e) => {
+	const handleDivClick = (e) => {
 		e.target.tagName === 'DIV' && closeMenuIfOpen();
 	};
 
@@ -45,9 +45,9 @@ const Header = ({links, links: [homeLink, ...categoryLinks]}) => {
 	};
 
 	return (
-		<header className={classNames(styles.header, {[styles.hidden]: scrollDirection === 'down'})} onClick={handleBtnClick}>
+		<header className={classNames(styles.header, {[styles.hidden]: scrollDirection === 'down'})}>
 
-			<div className={styles.headerBar}>
+			<div className={styles.headerBar} onClick={handleDivClick} data-testid="headerBar">
 
 				<button className={classNames(styles.button, styles.hamburgerBtn)} disabled={showConfirmation || showInvalidMessage} onClick={() => dispatch(toggleMenuIsOpen())}>
 					<img className={styles.hamburgerIcon} src={hamburger} alt="menu" />
@@ -64,7 +64,10 @@ const Header = ({links, links: [homeLink, ...categoryLinks]}) => {
 
 			</div>
 			
-			<div className={classNames(styles.menu, {[styles.hiddenMenu]: !menuIsOpen})}>
+			<div
+				className={classNames(styles.menu, {[styles.hiddenMenu]: !menuIsOpen})}
+				data-testid="menuContainer"
+			>
 				<CategoryNav where="menu" links={categoryLinks}/>
 			</div>
 

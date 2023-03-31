@@ -31,8 +31,16 @@ const renderCategoryNav = (props = {}) => {
 };
 
 describe('CategoryNav', () => {
-	it('renders CategoryNav component', () => {
+	it('renders CategoryNav component when where prop = menu', () => {
 		renderCategoryNav({where: 'menu', links: mockLinks});
+
+		const categoryNav = screen.getByRole('navigation');
+
+		expect(categoryNav).toBeInTheDocument();
+	});
+
+	it('renders CategoryNav component when where prop = page', () => {
+		renderCategoryNav({where: 'page', links: mockLinks});
 
 		const categoryNav = screen.getByRole('navigation');
 
