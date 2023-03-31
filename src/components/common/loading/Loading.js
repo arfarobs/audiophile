@@ -8,7 +8,7 @@ import headphones from '../../../assets/images/logo192.png';
 
 const Loading = ({ purpose }) => {
 	return (
-		<section className={classNames(styles.section, styles[purpose])}>
+		<section className={classNames(styles.section, styles[purpose])} data-testid={'loadingSection'}>
 			<img className={styles.img} src={headphones} alt="Loading please wait." />
 			{purpose === 'submit' && <h1 className="heading-1">Submitting</h1>}
 		</section>
