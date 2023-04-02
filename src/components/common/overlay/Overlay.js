@@ -22,6 +22,7 @@ const Overlay = () => {
 				styles.overlay, 
 				{[styles.show]: menuIsOpen || cartIsOpen || showConfirmation || showInvalidMessage || showSubmissionError})} 
 			onClick={handleOverlayClick}
+			data-testid="overlay"
 		>
 		</div>
 	);
