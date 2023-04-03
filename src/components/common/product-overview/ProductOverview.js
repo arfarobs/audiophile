@@ -20,7 +20,7 @@ const ProductOverview = ({src, alt, newProduct, productName, productDescription,
 				<source media='(max-width: 767px)' srcSet={src.mobile} />
 				<img className={styles.img} src={src.mobile} alt={alt} />
 			</picture>
-			<div className={classNames(styles.about, {[styles.odd]: isOdd})}>
+			<div className={classNames(styles.about, {[styles.odd]: isOdd})} data-testid="productOverviewAboutDiv">
 				{newProduct && <h4 className={classNames(styles.newProduct, 'new-product')}>new product</h4>}
 				<h2 className={classNames(styles.productName, 'heading-2')}>
 					{productNameTop}
