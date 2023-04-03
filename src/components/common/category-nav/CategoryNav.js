@@ -13,11 +13,11 @@ import NavItem from '../nav-item/NavItem';
 
 
 
-const CategoryNav = ({where, links}) => {
+const CategoryNav = ({where, links, testid}) => {
 	const dispatch = useDispatch();
 
 	return (
-		<nav className={classNames(styles.categoryNav, styles[where])} >
+		<nav className={classNames(styles.categoryNav, styles[where])} data-testid={testid}>
 			<ul className={styles.list}>
 
 				{links.map(link => (
@@ -35,7 +35,8 @@ const CategoryNav = ({where, links}) => {
 
 CategoryNav.propTypes = {
 	where: PropTypes.string.isRequired,
-	links: PropTypes.array.isRequired
+	links: PropTypes.array.isRequired,
+	testid: PropTypes.string
 };
 
 export default CategoryNav;

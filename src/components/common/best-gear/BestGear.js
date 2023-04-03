@@ -10,7 +10,7 @@ import desktopImage from '../../../assets/images/shared/desktop/image-best-gear.
 
 const BestGear = () => {
 	return ( 
-		<article className={styles.bestGear}>
+		<article className={styles.bestGear} data-testid="bestGear">
 			<picture className={classNames(styles.picture, 'picture-radius')}>
 				<source media='(min-width: 1440px)' srcSet={desktopImage} />
 				<source media='(min-width: 768px)' srcSet={tabletImage} />

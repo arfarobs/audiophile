@@ -41,17 +41,17 @@ const RouteLayout = () => {
 	} = componentMap[path] || {bestGear: true, categoryNavBottom: true};
 
 	return(
-		<div className={path !== '/' ? styles.moveBodyDown : undefined}>
+		<div className={path !== '/' ? styles.moveBodyDown : undefined} data-testid="routeLayoutDiv">
 			<ScrollRestoration />
 			<Header links={navigationLinks} />
 			<Overlay />
 			{cartIsOpen && <Cart />}
 			{banner && <Banner />}
-			{categoryNavTop && <CategoryNav where="page" links={navigationLinks.slice(1)} />}
+			{categoryNavTop && <CategoryNav where="page" links={navigationLinks.slice(1)} testid="categoryNavTop" />}
 			<main className={path !== '/' ? styles.mainDown: undefined}>
 				<Outlet />
 			</main>
-			{categoryNavBottom && <CategoryNav where="page" links={navigationLinks.slice(1)} />}
+			{categoryNavBottom && <CategoryNav where="page" links={navigationLinks.slice(1)} testid="categoryNavBottom"/>}
 			{bestGear && <BestGear />}
 			<Footer links={navigationLinks} />
 		</div>
