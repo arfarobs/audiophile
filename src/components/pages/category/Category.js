@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 // Components
 import Loading from '../../common/loading/Loading';
@@ -16,8 +17,8 @@ import { setIsLoading } from '../../../store/uiSlice';
 
 
 
-const Category = () => {
-	const category = useLocation().pathname.split('/')[2];
+const Category = ({testLocation}) => {
+	const category = testLocation || useLocation().pathname.split('/')[2];
 	const [products, setProducts] = useState([]);
 	const [notFound, setNotFound] = useState(false);
 	const { isLoading } = useSelector(state => state.ui);
@@ -59,6 +60,10 @@ const Category = () => {
 			})}			
 		</>
 	);
+};
+
+Category.propTypes = {
+	testLocation: PropTypes.string,
 };
 
 export default Category;
