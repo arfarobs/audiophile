@@ -8,7 +8,6 @@ import { setIsLoading } from '../../../store/uiSlice';
 
 jest.mock('../../../firebase/product');
 
-
 const mockStore = configureStore();
 
 const renderCategory = (location) => {
