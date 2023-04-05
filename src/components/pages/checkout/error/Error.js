@@ -18,7 +18,7 @@ const Error = () => {
 
 	useEffect(() => {
 		return () => {
-			dispatch(toggleShowSubmissionError);
+			dispatch(toggleShowSubmissionError());
 		};
 	});
 
