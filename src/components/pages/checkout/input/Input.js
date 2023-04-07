@@ -19,6 +19,50 @@ import {
 } from '../../../../store/actions';
 
 
+export const validate = (name, value, type, dispatch) => {
+	switch (name) {
+	case 'name':
+		dispatch(updateName(value, type));
+		break;
+
+	case 'email':
+		dispatch(updateEmail(value, type));
+		break;
+
+	case 'tel':
+		dispatch(updateTel(value, type));
+		break;
+
+	case 'address':
+		dispatch(updateAddress(value, type));
+		break;
+
+	case 'zip':
+		dispatch(updateZip(value, type));
+		break;
+
+	case 'city':
+		dispatch(updateCity(value, type));
+		break;
+
+	case 'country':
+		dispatch(updateCountry(value, type));
+		break;
+
+	case 'eNumber':
+		dispatch(updateENumber(value, type));
+		break;
+
+	case 'pin':
+		dispatch(updatePin(value, type));
+		break;
+
+
+	default:
+		break;
+	}
+};
+
 
 
 const Input = ({name, label, type, placeholder}) => {
@@ -26,56 +70,14 @@ const Input = ({name, label, type, placeholder}) => {
 	const inputsState = useSelector(state => state.checkout[name]);
 	const dispatch = useDispatch();
 
-	const validate = (name, value, type) => {
-		switch (name) {
-		case 'name':
-			dispatch(updateName(value, type));
-			break;
-
-		case 'email':
-			dispatch(updateEmail(value, type));
-			break;
-
-		case 'tel':
-			dispatch(updateTel(value, type));
-			break;
-
-		case 'address':
-			dispatch(updateAddress(value, type));
-			break;
-
-		case 'zip':
-			dispatch(updateZip(value, type));
-			break;
-
-		case 'city':
-			dispatch(updateCity(value, type));
-			break;
-
-		case 'country':
-			dispatch(updateCountry(value, type));
-			break;
-
-		case 'eNumber':
-			dispatch(updateENumber(value, type));
-			break;
-
-		case 'pin':
-			dispatch(updatePin(value, type));
-			break;
-
-
-		default:
-			break;
-		}
-	};
+	
 
 	const handleInputChange = (e) => {
 		const name = e.target.name;
 		const type = e.type;
 		const value = type === 'blur' ? e.target.value.trim() : e.target.value;
 		if (e.target.type !== 'radio') {
-			validate(name, value, type);
+			validate(name, value, type, dispatch);
 		}
 	};
 
