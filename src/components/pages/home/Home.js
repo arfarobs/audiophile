@@ -13,12 +13,14 @@ import zx7Desktop from '../../../assets/images/home/desktop/image-speaker-zx7.jp
 import yx1Mobile from '../../../assets/images/home/mobile/image-earphones-yx1.jpg';
 import yx1Tablet from '../../../assets/images/home/tablet/image-earphones-yx1.jpg';
 import yx1Desktop from '../../../assets/images/home/desktop/image-earphones-yx1.jpg';
+
+// Components
 import Button from '../../common/button/Button';
 
 const Home = () => {
 	return (
 		<>
-			<section className={classNames(styles.section, styles.zx9, 'radius')}>
+			<section className={classNames(styles.section, styles.zx9, 'radius')} data-testid="homeSection">
 				<picture className={styles.zx9Picture}>
 					<source media='(min-width: 1440px)' srcSet={zx9Desktop} />
 					<source media='(min-width: 768px)' srcSet={zx9Tablet} />
@@ -40,7 +42,7 @@ const Home = () => {
 				</div>
 			</section>
 
-			<section className={classNames(styles.section, styles.zx7, 'radius')}>
+			<section className={classNames(styles.section, styles.zx7, 'radius')} data-testid="homeSection">
 				<picture className={styles.zx7Picture}>
 					<source media='(min-width: 1090px)' srcSet={zx7Desktop} />
 					<source media='(min-width: 550px)' srcSet={zx7Tablet} />
@@ -59,7 +61,7 @@ const Home = () => {
 				</div>
 			</section>
 
-			<section className={classNames(styles.section, styles.yx1)}>
+			<section className={classNames(styles.section, styles.yx1)} data-testid="homeSection">
 				<picture className={classNames(styles.yx1Picture, 'picture-radius')}>
 					<source media='(min-width: 1440px)' srcSet={yx1Desktop} />
 					<source media='(min-width: 768px)' srcSet={yx1Tablet} />
