@@ -21,8 +21,11 @@ import { setIsLoading } from '../../../store/uiSlice';
 // Firebase
 import { getProductById } from '../../../firebase/product';
 
+// Util Functions
+import { getProductName } from './utils/getProductName';
+import { sortGalleryArray } from './utils/sortGalleryArray';
 
-
+// Component
 const Product = () => {
 	const [productData, setProductData] = useState(null);
 	const [notFound, setNotFound] = useState(false);
@@ -32,15 +35,6 @@ const Product = () => {
 	const dispatch = useDispatch();
 
 	console.count('Product:');
-
-	const getProductName = (name) => {
-		let productName = name.split(' ').slice(0, -1).join(' ');
-		
-		if (productName.includes('Mark')) {
-			productName = productName.replace('Mark', 'MK');
-		}
-		return productName;
-	};
 
 	useEffect(() => {
 		const getData = (id) => {
@@ -61,16 +55,6 @@ const Product = () => {
 
 	const { image, new: newProduct, name, description, price, features, includes, gallery, others, cartImage } = productData || {};
 
-	const sortGalleryArray = () => {
-		const galleryArray = Object.entries(gallery).map(([key, value]) => ({ key, ...value }));
-
-		return galleryArray.sort((a, b) => {
-			if (a.key < b.key) return -1;
-			if (a.key > b.key) return 1;
-			return 0;
-		});
-	};
-
 	const handleAddToCart = () => {
 		const productToAdd = {
 			cartThumbnail: cartImage,
@@ -84,8 +68,8 @@ const Product = () => {
 
 	return (
 		<>
-			{notFound && <NotFound />}
 			{isLoading && <Loading purpose="loading" />}
+			{notFound && <NotFound />}
 			{productData && (
 				<>
 					<article className={styles.article}>
@@ -111,7 +95,7 @@ const Product = () => {
 							includes={includes} 
 						/>
 						
-						<ProductGallery gallery={sortGalleryArray()} name={name} />
+						<ProductGallery gallery={sortGalleryArray(gallery)} name={name} />
 
 					</article>
 

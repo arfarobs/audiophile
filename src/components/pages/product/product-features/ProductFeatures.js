@@ -6,7 +6,7 @@ import styles from './ProductFeatures.module.css';
 
 const ProductFeatures = ({features, includes}) => {
 	return (
-		<section className={styles.section}>
+		<section className={styles.section} data-testid="productFeaturesSection">
 
 			<div className={styles.left} >
 				<h2 className={styles.h2}>Features</h2>
