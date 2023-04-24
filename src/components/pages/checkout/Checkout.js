@@ -14,17 +14,16 @@ import Error from './error/Error';
 import Loading from '../../common/loading/Loading';
 
 // Actions
+import { validateOnSubmit, toggleFormIsSubmitting, addOrder } from '../../../store/checkoutSlice';
 import { setIsLoading, toggleConfirmation, toggleShowInvalidMessage, toggleShowSubmissionError } from '../../../store/uiSlice';
 import { removeAll } from '../../../store/cartSlice';
 
 // Data
 import { billingDetailsInputs, eMoneyInputs, radioInputs, shippingInfoInputs } from '../../../data/inputs';
-import { validateOnSubmit, toggleFormIsSubbmitting, addOrder } from '../../../store/checkoutSlice';
 
 // Utils
 import calculateCost from '../../../utils/calculateCost';
 import InvalidMessage from './invalid-message/InvalidMessage';
-
 
 const Checkout = () => {
 	const { cart } = useSelector(state => state.cart);
@@ -52,7 +51,7 @@ const Checkout = () => {
 		const cost = calculateCost(cart);
 		dispatch(addOrder({cart, checkoutData, cost}));
 		dispatch(validateOnSubmit());
-		dispatch(toggleFormIsSubbmitting());
+		dispatch(toggleFormIsSubmitting());
 	};
 
 
@@ -98,14 +97,14 @@ const Checkout = () => {
 		};
 		if (formIsSubmitting) {
 			if (formIsValidRef.current) {
-				submitOrder();
+				submitOrder(orderRef, formIsValidRef, dispatch);
 			} else {
 				dispatch(setIsLoading(false));
 				dispatch(toggleShowInvalidMessage());
 			}
-			dispatch(toggleFormIsSubbmitting());
+			dispatch(toggleFormIsSubmitting());
 		}
-	}, [formIsSubmitting, dispatch, formIsValidRef, orderRef ]);
+	}, [formIsSubmitting, dispatch]);
 	
 
 	return (

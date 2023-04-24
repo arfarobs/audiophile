@@ -6,15 +6,14 @@
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
     "classnames": "^2.3.2",
-    "emailjs-com": "^3.2.0",
     "firebase": "^9.16.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
+    "redux-mock-store": "^1.5.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -42,6 +41,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/user-event": "^14.4.3",
     "eslint": "^8.36.0",
     "eslint-plugin-react": "^7.32.2"
   }

@@ -8,7 +8,7 @@ import Button from '../../../common/button/Button';
 
 const Recommendations = ({items}) => {
 	return (
-		<section className={styles.section}>
+		<section className={styles.section} data-testid="recommendationsSection">
 
 			<h3 className={styles.h3}>You may also like</h3>
 

@@ -15,7 +15,7 @@ const Summary = () => {
 	const {total, vat, shipping, grandTotal} = calculateCost(cart);
 
 	return (
-		<section className={styles.section}>
+		<section className={styles.section} data-testid="summarySection">
 
 			<h2 className={styles.h2}>Summary</h2>
 

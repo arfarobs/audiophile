@@ -14,7 +14,7 @@ const InvalidMessage = () => {
 	const dispatch = useDispatch();
 
 	return (
-		<section className={styles.section}>
+		<section className={styles.section} data-testid="invalidMessageSection">
 			<h2 className={classNames(styles.h2, 'heading-2')}>Uh Oh!</h2>
 			<p className={classNames(styles.p, 'paragraph')}>
 				There seem to be some problems with your form. Please double-check that everything is in a valid format, 

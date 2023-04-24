@@ -13,21 +13,19 @@ import NavItem from '../nav-item/NavItem';
 
 
 
-const CategoryNav = ({where, links}) => {
+const CategoryNav = ({where, links, testid}) => {
 	const dispatch = useDispatch();
 
-	const handleClick = () => {
-		if (where === 'menu') {
-			dispatch(toggleMenuIsOpen());
-		}
-	};
-
 	return (
-		<nav className={classNames(styles.categoryNav, styles[where])} >
+		<nav className={classNames(styles.categoryNav, styles[where])} data-testid={testid}>
 			<ul className={styles.list}>
 
 				{links.map(link => (
-					<NavItem link={link} key={link.title} handleClick={handleClick} />
+					<NavItem 
+						link={link} 
+						key={link.title} 
+						handleClick={where === 'menu' ? () => dispatch(toggleMenuIsOpen()) : undefined} 
+					/>
 				))}
 
 			</ul>
@@ -37,7 +35,8 @@ const CategoryNav = ({where, links}) => {
 
 CategoryNav.propTypes = {
 	where: PropTypes.string.isRequired,
-	links: PropTypes.array.isRequired
+	links: PropTypes.array.isRequired,
+	testid: PropTypes.string
 };
 
 export default CategoryNav;

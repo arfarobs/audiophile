@@ -62,7 +62,7 @@ export const checkoutSlice = createSlice({
 				state.formIsValid = state.name.valid & state.email.valid & state.tel.valid & state.address.valid & state.zip.valid & state.city.valid & state.country.valid;
 			}
 		},
-		toggleFormIsSubbmitting (state) {
+		toggleFormIsSubmitting (state) {
 			state.formIsSubmitting = !state.formIsSubmitting;
 		},
 		resetForm () {
@@ -91,7 +91,7 @@ export const {
 	updateENumber, 
 	updatePin,
 	validateOnSubmit,
-	toggleFormIsSubbmitting,
+	toggleFormIsSubmitting,
 	resetForm,
 	addOrder
 } = checkoutSlice.actions;

@@ -42,6 +42,7 @@ const FormSection = ({legend, inputs, radios}) => {
 										className={paymentMethod === name ? classNames(styles.radioContainer, styles.selected) : styles.radioContainer} 
 										key={label}
 										onClick={() => dispatch(setPaymentMethod(name))}
+										data-testid="radioContainer"
 									>
 										<Input name={name} label={label} type={type}/>
 									</div>
@@ -54,8 +55,8 @@ const FormSection = ({legend, inputs, radios}) => {
 							) 
 							: (
 								<div className={styles.cashContainer}>
-									<img src={cashImg} className={styles.cashImg} alt="" />
-									<p className={classNames(styles.cashMessage, 'paragraph')}>
+									<img src={cashImg} className={styles.cashImg} alt="" data-testid="cashImg"/>
+									<p className={classNames(styles.cashMessage, 'paragraph')} data-testid="cashMessage">
 											The ‘Cash on Delivery’ option enables you to pay in cash when our delivery courier arrives 
 											at your residence. Just make sure your address is correct so that your order will not be 
 											cancelled.

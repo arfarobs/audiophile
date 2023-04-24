@@ -48,7 +48,10 @@ const Confirmation = ({cost, message, cart}) => {
 
 				<CartItems where="confirmation" confirmationCart={cart} />
 
-				<div className={classNames(styles.totalContainer, cart.length > 1 ? styles.end : styles.center)}>
+				<div 
+					className={classNames(styles.totalContainer, cart.length > 1 ? styles.end : styles.center)}
+					data-testid="totalContainerDiv"
+				>
 					<p className={classNames(styles.total, 'paragraph')}>Grand total</p>
 					<p className={styles.totalPrice}>{grandTotal}</p>
 				</div>

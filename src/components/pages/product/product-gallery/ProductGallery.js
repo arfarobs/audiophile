@@ -6,7 +6,7 @@ import styles from './ProductGallery.module.css';
 
 const ProductGallery = ({gallery, name}) => {
 	return (
-		<section>
+		<section data-testid="productGallerySection">
 
 			<ul className={styles.list}>
 
