@@ -10,8 +10,8 @@ const mockStore = configureStore();
 const mockNavigate = jest.fn();
 
 jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockNavigate
+	...jest.requireActual('react-router-dom'),
+	useNavigate: () => mockNavigate
 }));
 
 const renderError = () => {
@@ -26,7 +26,7 @@ const renderError = () => {
 	return {
 		...render(
 			<Provider store={store}>
-					<Error />
+				<Error />
 			</Provider>, { wrapper: MemoryRouter }
 		),
 		store,
@@ -68,7 +68,7 @@ describe('Button', () => {
 	it('calls navigate with the correct argument when user clicks the button', async () => {
 		const user = userEvent.setup();
 
-		const { store } = renderError();
+		renderError();
 
 		const button = screen.getByRole('button', { name: /okay/i });
 

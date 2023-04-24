@@ -1,5 +1,4 @@
 import {render, screen} from '@testing-library/react';
-import RouteLayout from './RouteLayout';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
@@ -7,7 +6,6 @@ import { routerConfig } from '../../routes/routes';
 
 
 const mockStore = configureStore();
-const calculateCost = jest.fn();
 
 const renderRouteLayout = (cartIsOpen = false, path = '/') => {
 	const store = mockStore({
@@ -55,9 +53,9 @@ const renderRouteLayout = (cartIsOpen = false, path = '/') => {
 
 	return {
 		...render(
-				<Provider store={store}>
-						<RouterProvider router={router} />
-				</Provider>
+			<Provider store={store}>
+				<RouterProvider router={router} />
+			</Provider>
 		),
 		store,
 		router

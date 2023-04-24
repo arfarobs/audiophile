@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
@@ -54,7 +54,7 @@ const mockProps = {
 	label: 'label',
 	type: 'text',
 	placeholder: 'Enter your name'
-}
+};
 
 const renderInput = (store, props) => {
 	return {

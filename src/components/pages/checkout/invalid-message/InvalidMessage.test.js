@@ -37,7 +37,7 @@ describe('InvalidMessage', () => {
 	});
 
 	it('dispatches toggleShowInvalidMessage action when button is clicked', async () => {
-		const user = userEvent.setup()
+		const user = userEvent.setup();
 
 		const { store } = renderInvalidMessage();
 

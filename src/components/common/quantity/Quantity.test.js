@@ -15,7 +15,7 @@ const cartProps = {
 	where: 'cart',
 	productName: 'product name',
 	cartQuantity: 5
-}
+};
 
 const renderQuantity = (props, productQuantity) => {
 	const store = mockStore({

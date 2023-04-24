@@ -67,7 +67,7 @@ describe('Summary', () => {
 		expect(grandTotal.nextElementSibling).toHaveTextContent('$ 650');
 	});
 
-	 it('should render the correct input when payment method is e-money', () => {
+	it('should render the correct input when payment method is e-money', () => {
 		renderSummary();
 
 		const input = screen.getByRole('button', { name: 'Continue & pay' });
@@ -75,9 +75,9 @@ describe('Summary', () => {
 		expect(input).toBeInTheDocument();
 
 		expect(input).toHaveAttribute('value', 'Continue & pay');
-	 });
+	});
 
-	 it('should render the correct input when payment method is not e-money', () => {
+	it('should render the correct input when payment method is not e-money', () => {
 		renderSummary('cash');
 
 		const input = screen.getByRole('button', { name: 'Continue' });
@@ -85,5 +85,5 @@ describe('Summary', () => {
 		expect(input).toBeInTheDocument();
 
 		expect(input).toHaveAttribute('value', 'Continue');
-	 });
+	});
 });

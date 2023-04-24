@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import { createMemoryRouter, MemoryRouter, RouterProvider, Routes } from 'react-router-dom';
+import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import Product from './Product';
@@ -23,11 +23,11 @@ const renderProduct = (isLoading = false) => {
 	store.dispatch = jest.fn();
 
 	const routes = [
-    {
-      path: "/category/:category/product-details/:product",
-      element: <Product />,
-    },
-  ];
+		{
+			path: '/category/:category/product-details/:product',
+			element: <Product />,
+		},
+	];
 
 	const router = createMemoryRouter(routes, {
 		initialEntries: ['/category/test-category/product-details/test-product-id']
@@ -35,10 +35,10 @@ const renderProduct = (isLoading = false) => {
 
 	return {
 		...render(
-      <Provider store={store}>
-        <RouterProvider router={router} />
-      </Provider>
-    ),
+			<Provider store={store}>
+				<RouterProvider router={router} />
+			</Provider>
+		),
 		store
 	};
 };
@@ -121,8 +121,7 @@ const mockProduct = {
 			name: 'mocked others name 3',
 			slug: 'mocked others slug 3'
 		}
-	],
-	cartImage: 'cart-image.jpg'
+	]
 };
 
 describe('Product rendering', () => {

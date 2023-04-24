@@ -1,4 +1,4 @@
-import { render, screen, createEvent, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Navigation from './Navigation';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
@@ -46,8 +46,8 @@ const renderNavigation = (
 
 describe('Navigation', () => {
 	beforeEach(() => {
-    closeMenuIfopen.mockReset();
-  });
+		closeMenuIfopen.mockReset();
+	});
 
 	it('should render', () => {
 		renderNavigation();
