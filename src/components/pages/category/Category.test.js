@@ -1,5 +1,5 @@
-import { render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
-import { MemoryRouter, Route } from 'react-router-dom';
+import { render, screen, waitFor } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import Category from './Category';
@@ -68,8 +68,8 @@ const mockProducts = [
 ];
 
 describe('initial state and rendering', () => {
-  beforeEach(() => {
-    getProductsByCategory.mockImplementation(async (category) => {
+	beforeEach(() => {
+		getProductsByCategory.mockImplementation(async () => {
 			const result = {
 				empty: false,
 				docs: [
@@ -86,26 +86,26 @@ describe('initial state and rendering', () => {
 			};
 			return result;
 		});
-  });
+	});
 
 	afterEach(() => {
 		jest.clearAllMocks();
 	});
 
 	it('renders CategoryHeading and Loading components initially', async () => {
-		const { store } = renderCategory();
+		renderCategory();
 
 		const categoryHeading = screen.getByRole('heading', { name: /test-category/i });
 		const loading = screen.getByAltText(/loading please wait/i);
 
-    expect(categoryHeading).toBeInTheDocument();
-    expect(loading).toBeInTheDocument();
+		expect(categoryHeading).toBeInTheDocument();
+		expect(loading).toBeInTheDocument();
 
 		await waitFor(() => expect(getProductsByCategory).toHaveBeenCalledWith('test-category'));
-  });
+	});
 
-  it('renders category heading and product overviews when products are available', async () => {
-    const { store } = renderCategory();
+	it('renders category heading and product overviews when products are available', async () => {
+		renderCategory();
 
 		const categoryHeading = screen.getByRole('heading', { name: /test-category/i });
 
@@ -120,31 +120,31 @@ describe('initial state and rendering', () => {
 			expect(productDescriptions).toHaveLength(3);
 			productHeadings.forEach((heading) => expect(heading).toBeInTheDocument());
 			productDescriptions.forEach((description) => expect(description).toBeInTheDocument());
-		})
-  });
+		});
+	});
 
 	it('renders NotFound component when no products are available', async () => {
-    getProductsByCategory.mockResolvedValue({
-      empty: true,
-      docs: [],
-    });
+		getProductsByCategory.mockResolvedValue({
+			empty: true,
+			docs: [],
+		});
 
-    const { store } = renderCategory();
+		renderCategory();
 
-    await waitFor(() => expect(getProductsByCategory).toHaveBeenCalledWith('test-category'));
-    await waitFor(() => {
+		await waitFor(() => expect(getProductsByCategory).toHaveBeenCalledWith('test-category'));
+		await waitFor(() => {
 			const uhOhHeading = screen.getByRole('heading', { name: /uh oh/i });
 			const notFoundParagraph = screen.getByTestId('notFoundParagraph');
 
 			expect(uhOhHeading).toBeInTheDocument();
 			expect(notFoundParagraph).toBeInTheDocument();
 		});
-  });
+	});
 });
 
 describe('useEffect and API calls', () => {
-  beforeEach(() => {
-		getProductsByCategory.mockImplementation(async (category) => {
+	beforeEach(() => {
+		getProductsByCategory.mockImplementation(async () => {
 			const result = {
 				empty: false,
 				docs: [
@@ -155,7 +155,7 @@ describe('useEffect and API calls', () => {
 			};
 			return result;
 		});
-  });
+	});
 
 	afterEach(() => {
 		jest.clearAllMocks();
@@ -192,20 +192,20 @@ describe('useEffect and API calls', () => {
 		
 	});
 
-  it('calls getProductsByCategory with the correct argument', async () => {
-    const { store } = renderCategory();
+	it('calls getProductsByCategory with the correct argument', async () => {
+		renderCategory();
 
-    await waitFor(() => expect(getProductsByCategory).toHaveBeenCalledWith('test-category'));
-  });
+		await waitFor(() => expect(getProductsByCategory).toHaveBeenCalledWith('test-category'));
+	});
 
-  it('dispatches setIsLoading action with the correct value before API call', async () => {
-    const { store } = renderCategory();
+	it('dispatches setIsLoading action with the correct value before API call', async () => {
+		const { store } = renderCategory();
 
-    await waitFor(() => {
+		await waitFor(() => {
 			expect(store.dispatch).toHaveBeenCalledWith(setIsLoading(true));
-    	expect(store.dispatch).toHaveBeenCalledTimes(1);
+			expect(store.dispatch).toHaveBeenCalledTimes(1);
 		});
-  });
+	});
 
 	it('dispatches setIsLoading action with the correct value after API call', async () => {
 		const { store } = renderCategory();

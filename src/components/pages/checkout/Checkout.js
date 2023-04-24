@@ -96,9 +96,9 @@ const Checkout = () => {
 			}
 		};
 		if (formIsSubmitting) {
-      if (formIsValidRef.current) {
-        submitOrder(orderRef, formIsValidRef, dispatch);
-      } else {
+			if (formIsValidRef.current) {
+				submitOrder(orderRef, formIsValidRef, dispatch);
+			} else {
 				dispatch(setIsLoading(false));
 				dispatch(toggleShowInvalidMessage());
 			}

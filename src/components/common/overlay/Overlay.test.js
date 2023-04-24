@@ -24,7 +24,7 @@ const renderOverlay = (state = mockState) => {
 	return{
 		...render(
 			<Provider store={store}>
-					<Overlay />
+				<Overlay />
 			</Provider>
 		),
 		store

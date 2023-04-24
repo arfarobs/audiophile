@@ -46,7 +46,7 @@ const createStore = () => {
 	});
 
 	return store;
-}
+};
 
 const renderFormSection = (store, legend, inputs, radios) => {
 	return {

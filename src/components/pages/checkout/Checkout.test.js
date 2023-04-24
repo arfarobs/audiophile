@@ -2,13 +2,12 @@ import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
-import Checkout, {submitOrder} from './Checkout';
+import Checkout from './Checkout';
 import userEvent from '@testing-library/user-event';
 import { configureStore } from '@reduxjs/toolkit';
 import uiReducer from '../../../store/uiSlice';
 import cartReducer from '../../../store/cartSlice';
 import checkoutReducer from '../../../store/checkoutSlice';
-import { store } from '../../../store/store';
 
 const mockStore = configureMockStore();
 
@@ -17,8 +16,8 @@ window.alert = jest.fn();
 const mockNavigate = jest.fn();
 
 jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockNavigate
+	...jest.requireActual('react-router-dom'),
+	useNavigate: () => mockNavigate
 }));
 
 const mockCart = [
@@ -103,14 +102,14 @@ const renderCheckout = (cart, checkout) => {
 describe('Checkout rendering', () => {
 	let alertMock;
 
-  beforeEach(() => {
-    alertMock = jest.spyOn(window, 'alert');
-    mockNavigate.mockReset();
-  });
+	beforeEach(() => {
+		alertMock = jest.spyOn(window, 'alert');
+		mockNavigate.mockReset();
+	});
 
-  afterEach(() => {
-    alertMock.mockReset();
-  });
+	afterEach(() => {
+		alertMock.mockReset();
+	});
 
 	it('renders without crashing', () => {
 		renderCheckout(mockCart);
@@ -168,30 +167,30 @@ describe('Checkout form submission', () => {
 		const addOrderPayload = {
 			cart: [
 				{
-					image: "test-product.jpg",
+					image: 'test-product.jpg',
 					price: 100,
-					productName: "Test Product",
+					productName: 'Test Product',
 					quantity: 1,
-					slug: "test-product",
+					slug: 'test-product',
 				},
 			],
 			checkoutData: {
 				address: 'Test Address',
 				city: 'Test City',
 				country: 'Test Country',
-				"e-money": "e-money",
-				eNumber: "123456789",
+				'e-money': 'e-money',
+				eNumber: '123456789',
 				email: 'test@email.com',
 				name: 'Test Name',
-				pin: "1234",
-				tel: "123456789",
-				zip: "12345",
+				pin: '1234',
+				tel: '123456789',
+				zip: '12345',
 			},
 			cost: {
-				grandTotal: "$ 170",
-				shipping: "$ 50",
-				total: "$ 100",
-				vat: "$ 20",
+				grandTotal: '$ 170',
+				shipping: '$ 50',
+				total: '$ 100',
+				vat: '$ 20',
 			},
 		};
 
@@ -210,15 +209,15 @@ describe('Checkout form submission', () => {
 });
 
 describe('submitOrder function', () => {
-  let fetchMock;
+	let fetchMock;
 
-  beforeEach(() => {
-    fetchMock = jest.spyOn(global, 'fetch');
-  });
+	beforeEach(() => {
+		fetchMock = jest.spyOn(global, 'fetch');
+	});
 
-  afterEach(() => {
-    fetchMock.mockRestore();
-  });
+	afterEach(() => {
+		fetchMock.mockRestore();
+	});
 
 	const submitValidForm = async () => {
 		const user = userEvent.setup();
@@ -268,101 +267,101 @@ describe('submitOrder function', () => {
 		await user.type(inputs[8], '1234');
 		await user.click(radios[0]);
 
-    const button = screen.getByRole('button', { name: /continue & pay/i });
-    await user.click(button);
+		const button = screen.getByRole('button', { name: /continue & pay/i });
+		await user.click(button);
 	};
 
-  it('is called with the correct parameters when the form is valid and submitting', async () => {
+	it('is called with the correct parameters when the form is valid and submitting', async () => {
 		fetchMock.mockImplementation(() =>
-      Promise.resolve({
-        ok: true,
-        status: 200,
-        json: () => Promise.resolve({ message: 'Order submitted successfully', cart: [] }),
-      })
-    );
+			Promise.resolve({
+				ok: true,
+				status: 200,
+				json: () => Promise.resolve({ message: 'Order submitted successfully', cart: [] }),
+			})
+		);
 
 		await submitValidForm();
 
-    await waitFor(() => expect(fetchMock).toHaveBeenCalled());
+		await waitFor(() => expect(fetchMock).toHaveBeenCalled());
 
 		const actualDate = JSON.parse(fetchMock.mock.calls[0][1].body).date;
 
-    const expectedOrder = {
+		const expectedOrder = {
 			cart: [
 				{
-					productName: "Test Product",
+					productName: 'Test Product',
 					price: 100,
 					quantity: 1,
-					image: "test-product.jpg",
-					slug: "test-product"
+					image: 'test-product.jpg',
+					slug: 'test-product'
 				}
 			],
 			form: {
-				name: "Test Name",
-				email: "test@email.com",
-				tel: "123456789",
-				address: "Test Address",
-				zip: "12345",
-				city: "Test City",
-				country: "Test Country",
-				"e-money": "e-money",
-				eNumber: "12345678",
-				pin: "1234",
-				paymentMethod: "e-money"
+				name: 'Test Name',
+				email: 'test@email.com',
+				tel: '123456789',
+				address: 'Test Address',
+				zip: '12345',
+				city: 'Test City',
+				country: 'Test Country',
+				'e-money': 'e-money',
+				eNumber: '12345678',
+				pin: '1234',
+				paymentMethod: 'e-money'
 			},
 			cost: {
-				total: "$ 100",
-				vat: "$ 20",
-				shipping: "$ 50",
-				grandTotal: "$ 170"
+				total: '$ 100',
+				vat: '$ 20',
+				shipping: '$ 50',
+				grandTotal: '$ 170'
 			},
 			date: actualDate
-		}
+		};
 
-    const expectedFetchParams = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(expectedOrder),
-    };
+		const expectedFetchParams = {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(expectedOrder),
+		};
 
-    expect(fetchMock).toHaveBeenCalledWith(
-      'https://europe-west3-audiophile-faa70.cloudfunctions.net/submitOrder',
-      expectedFetchParams
-    );
-  });
+		expect(fetchMock).toHaveBeenCalledWith(
+			'https://europe-west3-audiophile-faa70.cloudfunctions.net/submitOrder',
+			expectedFetchParams
+		);
+	});
 
 	it('displays confirmation on successful API response', async () => {
-    fetchMock.mockImplementation(() =>
-      Promise.resolve({
-        ok: true,
-        status: 200,
-        json: () => Promise.resolve({ message: 'Order submitted successfully', cart: [] }),
-      })
-    );
-
-    await submitValidForm();
-
-    await waitFor(() => expect(fetchMock).toHaveBeenCalled());
-
-    const confirmationHeding = await screen.findByRole('heading', { name: /thank you for your order/i });
-
-		expect(confirmationHeding).toBeInTheDocument();
-  });
-
-	it('displays invalid form message when API responds with a 422 status', async () => {
-    fetchMock.mockImplementation(() =>
-      Promise.resolve({
-        ok: false,
-        status: 422,
-        json: () => Promise.resolve({ message: 'Invalid data' }),
-      })
-    );
+		fetchMock.mockImplementation(() =>
+			Promise.resolve({
+				ok: true,
+				status: 200,
+				json: () => Promise.resolve({ message: 'Order submitted successfully', cart: [] }),
+			})
+		);
 
 		await submitValidForm();
 
-    await waitFor(() => expect(fetchMock).toHaveBeenCalled());
+		await waitFor(() => expect(fetchMock).toHaveBeenCalled());
+
+		const confirmationHeding = await screen.findByRole('heading', { name: /thank you for your order/i });
+
+		expect(confirmationHeding).toBeInTheDocument();
+	});
+
+	it('displays invalid form message when API responds with a 422 status', async () => {
+		fetchMock.mockImplementation(() =>
+			Promise.resolve({
+				ok: false,
+				status: 422,
+				json: () => Promise.resolve({ message: 'Invalid data' }),
+			})
+		);
+
+		await submitValidForm();
+
+		await waitFor(() => expect(fetchMock).toHaveBeenCalled());
 
 		const errorHeading = await screen.findByRole('heading', { name: /uh oh!/i });
 		const errorMessage = await screen.findByText(/There seem to be some problems with your form./i);
@@ -372,24 +371,24 @@ describe('submitOrder function', () => {
 	});
 
 	it('displays a message stating that there was an issue with submission when API responds with a 500 status', async () => {
-    fetchMock.mockImplementation(() =>
-      Promise.resolve({
-        ok: false,
-        status: 500,
-        json: () => Promise.resolve({ message: 'Server error' }),
-      })
-    );
+		fetchMock.mockImplementation(() =>
+			Promise.resolve({
+				ok: false,
+				status: 500,
+				json: () => Promise.resolve({ message: 'Server error' }),
+			})
+		);
 
 		await submitValidForm();
 
-    await waitFor(() => expect(fetchMock).toHaveBeenCalled());
+		await waitFor(() => expect(fetchMock).toHaveBeenCalled());
 
 		const errorHeading = await screen.findByRole('heading', { name: /uh oh/i });
 		const errorMessage = await screen.findByText(/We're sorry, but we were unable to process your order at this time./i);
 
 		expect(errorHeading).toBeInTheDocument();
 		expect(errorMessage).toBeInTheDocument();
-  });
+	});
 });
 
 describe('Go back button', () => {
