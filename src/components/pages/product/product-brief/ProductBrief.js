@@ -10,7 +10,7 @@ import Button from '../../../common/button/Button';
 
 const ProductBrief = ({image, newProduct, name, description, price, onClick}) => {
 	return (
-		<section className={styles.section}>
+		<section className={styles.section} data-testid="productBriefSection">
 
 			<picture className={classNames(styles.picture, 'picture-radius')}>
 				<source media='(min-width: 1440px)' srcSet={image.desktop} />
