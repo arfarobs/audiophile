@@ -1,5 +1,4 @@
 import { getProductName } from './getProductName';
-import { expect } from '@jest/globals';
 
 describe('getProductName', () => {
 	it('should return the correct name when input includes "Mark"', () => {
