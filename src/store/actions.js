@@ -92,7 +92,7 @@ const createAction = (actionType, payload) => {
 
 // Regex
 const lettersAndSpacesRegex = (value) => /^[A-Za-z\s]+$/.test(value);   //Checks for letters and spaces only.
-const emailRegex = (value) => /^\w+(?:[.-]?\w+)@\w+(?:[.-]?\w+)(?:.\w{2,3})+$/.test(value);
+const emailRegex = (value) => /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(value);
 const phoneRegex = (value) => /^[0-9+\- .]+$/.test(value);
 const numbersOnlyRegex = (value) => /^[0-9]+$/.test(value);
 
