@@ -74,7 +74,7 @@ export const checkoutSlice = createSlice({
 			state.order.form = checkoutData;
 			state.order.cost = cost;
 			state.order.form.paymentMethod = state.paymentMethod;
-			state.order.date = Date();
+			state.order.date = new Date().toUTCString();
 		}
 	}
 });
