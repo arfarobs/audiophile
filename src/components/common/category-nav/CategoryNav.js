@@ -17,7 +17,11 @@ const CategoryNav = ({where, links, testid}) => {
 	const dispatch = useDispatch();
 
 	return (
-		<nav className={classNames(styles.categoryNav, styles[where])} data-testid={testid}>
+		<nav 
+			className={classNames(styles.categoryNav, styles[where])} 
+			data-testid={testid} 
+			aria-label={`${where} product category navigation`}
+		>
 			<ul className={styles.list}>
 
 				{links.map(link => (
