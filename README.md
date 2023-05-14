@@ -1,8 +1,6 @@
-# Frontend Mentor - Audiophile e-commerce website solution
+# Audiophile e-commerce website
 
-This is a solution to the [Audiophile e-commerce website challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
-
-## Table of contents
+## Contents
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
@@ -12,27 +10,18 @@ This is a solution to the [Audiophile e-commerce website challenge on Frontend M
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
-Why is the figma and my mobile hero different? include screenshots.
-Should I store the assets for the home page in a DB? 
-Should I store all images in firebase Storage or locally?
-Should I just store the image url into firestore and load images like this, or should I use getBlob to get my images. why? I assume getBlob is just for getting the url after uploading it so that you can add a reference to the firestore DB? Fucking confused.
-Should I retrieve data and then store it in state to avoid extra calls to the database?
-In the future I will upgrade to an API to validate the form but now I wanted to play with validation myself.
-What do you think about the readability of my code?
-I changed the background of the checkout page because I couldn't see the difference very well. Maybe it's my monitor or maybe it's my eyes.
-What is the speed like? I'm in China. Servers in Europe. I can only view website with a VPN.
+This is a fake e-commerce website that I built. I got the design from frontentmentor.io. If you don't know what that is, it is a website that will give you a Figma design and some basic requirements, and you are left to code the website. 
 
+This project took me a long time, and I learned so much. In its current state, the website is working, but there are still a few improvements that need to be made. 
 
+If you view this website, please use a valid email when completing the checkout process. You will recieve an automated email from my address on checkout completion.
 
 ### The challenge
+
+Below are the requirements for the website from Frontend Mentor.
 
 Users should be able to:
 
@@ -48,85 +37,63 @@ Users should be able to:
 - See an order confirmation modal after checking out with an order summary
 - **Bonus**: Keep track of what's in the cart, even after refreshing the browser (`localStorage` could be used for this if you're not building out a full-stack app)
 
-### Screenshot
-
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
-
 ### Links
 
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [https://audiophile-aef599.netlify.app/](https://audiophile-aef599.netlify.app/)
 
 ## My process
 
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- HTML
+- CSS
+- ReactJS
+- redux-toolkit
+- Firebase Storage
+- Firebase Firestore
+- Firebase Functions
+- react-router-dom
+- Jest
+- React Testing Library
+- Express.js
+- EmailJS
+- Validatorjs
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+- I learned a lot about using Firebase, especially when it comes to writing Firebase Functions.
 
-To see how you can add code snippets, see below:
+- I learned a lot about testing, but surely still have a way to go.
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
+- I learned about server side validation. I used validatorjs to do the server side validation.
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+- I wrote the client-side validation myself. This was painful and took a lot of time. I don't think that this is the best way to do this, but I believe you need to learn to walk before you run. So I like to learn to do things with vanilla code before relying on a third-party-service.
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+- I learned a lot about ExpressJS and making basic servers. At first, I made my own server to handle some of the back-end, then changed over to Firebase Functions for simplicity.
+
+I learned so much more, but these are the main things that come to mind when writing this.
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+Below are some improvements that I may make in the future.
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
-
-### Useful resources
-
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
-
-## Author
-
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Optimize for lighthouse report.
+- Refactor unit tests.
+- Implement google auth.
+- Put cart on firebase.
+- Improve global css.
+- imporve button component add add to cart to it and maybe go to checkout.
+- Improve empty cart checkout error message.
+- Make an overlay that tells the user that the marketing monkeys are still working on creating the social media websites. Maybe add a gif of them doing this.
+- Improve image alts.
+- Add a message or animation to confirm item is added to cart.
+- Put the number of items animation next to cart symbol.
+- Learn about using variables in css modules. Read the documentation and guides to see how I can improve this.
+- Make responsive for bigger screen sizes. At 4k it looks bad. Make it scale up to 8k.
+- Improve invalid url error message.
+- Improve checkout error message active styling. Look at emailjs login for inspiration.
+- Upgrade confirmation email.
+- Improve my eslint rules.
+- Use a validation library for the clientside.
+- display images in webp formats https://edgemesh.com/blog/next-gen-image-formats
