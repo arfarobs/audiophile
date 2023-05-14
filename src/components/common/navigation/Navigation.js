@@ -12,10 +12,12 @@ const Navigation = ({links, where, closeMenuIfOpen}) => {
 	};
 
 	return (
-		<nav className={styles[where]}>
+		<nav className={styles[where]} aria-label={`${where} page navigation`}>
 			<ul className={styles.navList}>
 				{links.map(({to, title}) => (
-					<NavLink className={styles.link} to={to} key={title} onClick={handleClick}>{title}</NavLink>
+					<li key={title}>
+						<NavLink className={styles.link} to={to} onClick={handleClick}>{title}</NavLink>
+					</li>
 				))}
 			</ul>
 		</nav>

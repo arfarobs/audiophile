@@ -46,13 +46,13 @@ const RouteLayout = () => {
 			<Header links={navigationLinks} />
 			<Overlay />
 			{cartIsOpen && <Cart />}
-			{banner && <Banner />}
-			{categoryNavTop && <CategoryNav where="page" links={navigationLinks.slice(1)} testid="categoryNavTop" />}
 			<main className={path !== '/' ? styles.mainDown: undefined}>
+				{banner && <Banner />}
+				{categoryNavTop && <CategoryNav where="page" links={navigationLinks.slice(1)} testid="categoryNavTop" />}
 				<Outlet />
+				{categoryNavBottom && <CategoryNav where="page" links={navigationLinks.slice(1)} testid="categoryNavBottom"/>}
+				{bestGear && <BestGear />}
 			</main>
-			{categoryNavBottom && <CategoryNav where="page" links={navigationLinks.slice(1)} testid="categoryNavBottom"/>}
-			{bestGear && <BestGear />}
 			<Footer links={navigationLinks} />
 		</div>
 	);
