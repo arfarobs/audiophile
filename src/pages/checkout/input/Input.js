@@ -16,7 +16,7 @@ import {
 	updateCountry, 
 	updateENumber, 
 	updatePin 
-} from '../../../../store/actions';
+} from '../../../store/actions';
 
 
 export const validate = (name, value, type, dispatch) => {

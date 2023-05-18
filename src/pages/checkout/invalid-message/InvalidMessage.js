@@ -5,10 +5,10 @@ import { useDispatch } from 'react-redux';
 import styles from './InvalidMessage.module.css';
 
 // Components
-import Button from '../../../common/button/Button';
+import Button from '../../../components/common/button/Button';
 
 // Actions
-import { toggleShowInvalidMessage } from '../../../../store/uiSlice';
+import { toggleShowInvalidMessage } from '../../../store/uiSlice';
 
 const InvalidMessage = () => {
 	const dispatch = useDispatch();

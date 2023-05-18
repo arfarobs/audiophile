@@ -6,23 +6,23 @@ import { useNavigate } from 'react-router-dom';
 import styles from './Checkout.module.css';
 
 // Components
-import Confirmation from '../../confirmation/Confirmation';
-import Button from '../../common/button/Button';
+import Confirmation from '../../components/confirmation/Confirmation';
+import Button from '../../components/common/button/Button';
 import FormSection from './form-section/FormSection';
 import Summary from './summary/Summary';
 import Error from './error/Error';
-import Loading from '../../common/loading/Loading';
+import Loading from '../../components/common/loading/Loading';
 
 // Actions
-import { validateOnSubmit, toggleFormIsSubmitting, addOrder } from '../../../store/checkoutSlice';
-import { setIsLoading, toggleConfirmation, toggleShowInvalidMessage, toggleShowSubmissionError } from '../../../store/uiSlice';
-import { removeAll } from '../../../store/cartSlice';
+import { validateOnSubmit, toggleFormIsSubmitting, addOrder } from '../../store/checkoutSlice';
+import { setIsLoading, toggleConfirmation, toggleShowInvalidMessage, toggleShowSubmissionError } from '../../store/uiSlice';
+import { removeAll } from '../../store/cartSlice';
 
 // Data
-import { billingDetailsInputs, eMoneyInputs, radioInputs, shippingInfoInputs } from '../../../data/inputs';
+import { billingDetailsInputs, eMoneyInputs, radioInputs, shippingInfoInputs } from '../../data/inputs';
 
 // Utils
-import calculateCost from '../../../utils/calculateCost';
+import calculateCost from '../../utils/calculateCost';
 import InvalidMessage from './invalid-message/InvalidMessage';
 
 const Checkout = () => {

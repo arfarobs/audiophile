@@ -7,10 +7,10 @@ import { useEffect } from 'react';
 import styles from './Error.module.css';
 
 //Components
-import Button from '../../../common/button/Button';
+import Button from '../../../components/common/button/Button';
 
 // Actions
-import { toggleShowSubmissionError } from '../../../../store/uiSlice';
+import { toggleShowSubmissionError } from '../../../store/uiSlice';
 
 const Error = () => {
 	const dispatch = useDispatch();

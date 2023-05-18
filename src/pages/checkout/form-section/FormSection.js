@@ -6,14 +6,14 @@ import PropTypes from 'prop-types';
 import styles from './FormSection.module.css';
 
 // Images
-import cashImg from '../../../../assets/images/checkout/icon-cash-on-delivery.svg';
+import cashImg from '../../../assets/images/checkout/icon-cash-on-delivery.svg';
 
 // Components
 import Input from '../input/Input';
 import PaymentMethodInputs from '../payment-method-inputs/PaymentMethodInputs';
 
 // Actions
-import { setPaymentMethod } from '../../../../store/checkoutSlice';
+import { setPaymentMethod } from '../../../store/checkoutSlice';
 
 
 

@@ -4,18 +4,18 @@ import classNames from 'classnames';
 import styles from './Home.module.css';
 
 //Images
-import zx9Mobile from '../../../assets/images/home/mobile/image-speaker-zx9.png';
-import zx9Tablet from '../../../assets/images/home/tablet/image-speaker-zx9.png';
-import zx9Desktop from '../../../assets/images/home/desktop/image-speaker-zx9.png';
-import zx7Mobile from '../../../assets/images/home/mobile/image-speaker-zx7.jpg';
-import zx7Tablet from '../../../assets/images/home/tablet/image-speaker-zx7.jpg';
-import zx7Desktop from '../../../assets/images/home/desktop/image-speaker-zx7.jpg';
-import yx1Mobile from '../../../assets/images/home/mobile/image-earphones-yx1.jpg';
-import yx1Tablet from '../../../assets/images/home/tablet/image-earphones-yx1.jpg';
-import yx1Desktop from '../../../assets/images/home/desktop/image-earphones-yx1.jpg';
+import zx9Mobile from '../../assets/images/home/mobile/image-speaker-zx9.png';
+import zx9Tablet from '../../assets/images/home/tablet/image-speaker-zx9.png';
+import zx9Desktop from '../../assets/images/home/desktop/image-speaker-zx9.png';
+import zx7Mobile from '../../assets/images/home/mobile/image-speaker-zx7.jpg';
+import zx7Tablet from '../../assets/images/home/tablet/image-speaker-zx7.jpg';
+import zx7Desktop from '../../assets/images/home/desktop/image-speaker-zx7.jpg';
+import yx1Mobile from '../../assets/images/home/mobile/image-earphones-yx1.jpg';
+import yx1Tablet from '../../assets/images/home/tablet/image-earphones-yx1.jpg';
+import yx1Desktop from '../../assets/images/home/desktop/image-earphones-yx1.jpg';
 
 // Components
-import Button from '../../common/button/Button';
+import Button from '../../components/common/button/Button';
 
 const Home = () => {
 	return (

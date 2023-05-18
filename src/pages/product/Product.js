@@ -6,20 +6,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './Product.module.css';
 
 // Components
-import Button from '../../common/button/Button';
+import Button from '../../components/common/button/Button';
 import ProductBrief from './product-brief/ProductBrief';
 import ProductFeatures from './product-features/ProductFeatures';
 import ProductGallery from './product-gallery/ProductGallery';
 import Recommendations from './recommendations/Recommendations';
-import NotFound from '../../common/not-found/NotFound';
-import Loading from '../../common/loading/Loading';
+import NotFound from '../../components/common/not-found/NotFound';
+import Loading from '../../components/common/loading/Loading';
 
 // Actions
-import { addToCart } from '../../../store/cartSlice';
-import { setIsLoading } from '../../../store/uiSlice';
+import { addToCart } from '../../store/cartSlice';
+import { setIsLoading } from '../../store/uiSlice';
 
 // Firebase
-import { getProductById } from '../../../firebase/product';
+import { getProductById } from '../../firebase/product';
 
 // Util Functions
 import { getProductName } from './utils/getProductName';

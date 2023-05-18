@@ -6,7 +6,7 @@ import styles from './Header.module.css';
 
 // Hooks
 import { useDispatch, useSelector } from 'react-redux';
-import { useScrollDirection } from '../../../utils/useScrollDirection.js';
+import { useScrollDirection } from '../../../hooks/useScrollDirection.js';
 
 //Actions
 import { toggleCartIsOpen, toggleMenuIsOpen } from '../../../store/uiSlice';
