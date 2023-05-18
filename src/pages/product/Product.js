@@ -34,8 +34,6 @@ const Product = () => {
 	const { product, category } = useParams();
 	const dispatch = useDispatch();
 
-	console.count('Product:');
-
 	useEffect(() => {
 		const getData = (id) => {
 			dispatch(setIsLoading(true));

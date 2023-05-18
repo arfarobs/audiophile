@@ -21,9 +21,7 @@ import { useEffect } from 'react';
 
 const Confirmation = ({cost, message, cart}) => {
 	const dispatch = useDispatch();
-
 	const grandTotal = cost.grandTotal;
-	console.count('confirmation:');
 
 	useEffect(() => {
 		return () => {
