@@ -4,10 +4,10 @@ import { useSelector } from 'react-redux';
 import styles from './Summary.module.css';
 
 // Components
-import CartItems from '../../../common/cart/cart-items/CartItems';
+import CartItems from '../../../components/common/cart/cart-items/CartItems';
 
 // Utils
-import calculateCost from '../../../../utils/calculateCost';
+import calculateCost from '../../../utils/calculateCost';
 
 const Summary = () => {
 	const { cart } = useSelector(state => state.cart);

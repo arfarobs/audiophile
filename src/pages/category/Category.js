@@ -4,16 +4,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 // Components
-import Loading from '../../common/loading/Loading';
-import CategoryHeading from '../../common/category-heading/CategoryHeading';
-import ProductOverview from '../../common/product-overview/ProductOverview';
-import NotFound from '../../common/not-found/NotFound';
+import Loading from '../../components/common/loading/Loading';
+import CategoryHeading from '../../components/common/category-heading/CategoryHeading';
+import ProductOverview from '../../components/common/product-overview/ProductOverview';
+import NotFound from '../../components/common/not-found/NotFound';
 
 // Firebase
-import { getProductsByCategory } from '../../../firebase/product';
+import { getProductsByCategory } from '../../firebase/product';
 
 // Actions 
-import { setIsLoading } from '../../../store/uiSlice';
+import { setIsLoading } from '../../store/uiSlice';
 
 
 

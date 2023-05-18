@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './Recommendations.module.css';
 
 // Components
-import Button from '../../../common/button/Button';
+import Button from '../../../components/common/button/Button';
 
 const Recommendations = ({items}) => {
 	return (

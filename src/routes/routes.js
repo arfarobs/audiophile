@@ -5,10 +5,10 @@ import {
 } from 'react-router-dom';
 
 //   Pages
-import Home from '../components/pages/home/Home';
-import Category from '../components/pages/category/Category';
-import Product from '../components/pages/product/Product';
-import Checkout from '../components/pages/checkout/Checkout';
+import Home from '../pages/home/Home';
+import Category from '../pages/category/Category';
+import Product from '../pages/product/Product';
+import Checkout from '../pages/checkout/Checkout';
 import NotFound from '../components/common/not-found/NotFound';
 
 //   Layouts

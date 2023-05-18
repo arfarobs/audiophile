@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import styles from './ProductBrief.module.css';
 
 // Components
-import Quantity from '../../../common/quantity/Quantity';
-import Button from '../../../common/button/Button';
+import Quantity from '../../../components/common/quantity/Quantity';
+import Button from '../../../components/common/button/Button';
 
 const ProductBrief = ({image, newProduct, name, description, price, onClick}) => {
 	return (
