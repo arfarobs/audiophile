@@ -5,9 +5,9 @@ import configureMockStore from 'redux-mock-store';
 import Checkout from './Checkout';
 import userEvent from '@testing-library/user-event';
 import { configureStore } from '@reduxjs/toolkit';
-import uiReducer from '../../../store/uiSlice';
-import cartReducer from '../../../store/cartSlice';
-import checkoutReducer from '../../../store/checkoutSlice';
+import uiReducer from '../../store/uiSlice';
+import cartReducer from '../../store/cartSlice';
+import checkoutReducer from '../../store/checkoutSlice';
 
 const mockStore = configureMockStore();
 

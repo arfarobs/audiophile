@@ -14,7 +14,7 @@ import {
 	updatePin, 
 	updateTel, 
 	updateZip 
-} from '../../../../store/actions';
+} from '../../../store/actions';
 
 const mockStore = configureMockStore();
 

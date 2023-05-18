@@ -3,9 +3,9 @@ import userEvent from '@testing-library/user-event';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import FormSection from './FormSection';
-import { billingDetailsInputs, eMoneyInputs, radioInputs, shippingInfoInputs } from '../../../../data/inputs';
+import { billingDetailsInputs, eMoneyInputs, radioInputs, shippingInfoInputs } from '../../../data/inputs';
 import { configureStore } from '@reduxjs/toolkit';
-import checkoutReducer from '../../../../store/checkoutSlice';
+import checkoutReducer from '../../../store/checkoutSlice';
 
 const mockStore = configureMockStore();
 
