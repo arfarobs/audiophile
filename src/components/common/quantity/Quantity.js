@@ -17,8 +17,6 @@ const Quantity = ({where, productName, cartQuantity}) => {
 	const dispatch = useDispatch();
 	const location = useLocation();
 
-	console.count('Quantity:');
-
 	useEffect(() => {
 		if (where === 'product') {
 			dispatch(resetQuantity());

@@ -36,12 +36,8 @@ const Checkout = () => {
 	const formIsValidRef = useRef(formIsValid);
 	const orderRef = useRef(order);
 
-  
-
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-
-	console.count('Checkout:');
 
 	const handleSubmit = (event) => {
 		event.preventDefault();

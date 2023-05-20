@@ -24,8 +24,6 @@ const Category = ({testLocation}) => {
 	const { isLoading } = useSelector(state => state.ui);
 	const dispatch = useDispatch();
 
-	console.count('category:');
-
 	useEffect(() => {
 		dispatch(setIsLoading(true));
 		getProductsByCategory(category).then((response) => {

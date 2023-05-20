@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, createEvent } from '@testing-library/react';
 import Header from './Header';
-import * as ScrollDirectionHook from '../../../utils/useScrollDirection';
+import * as ScrollDirectionHook from '../../../hooks/useScrollDirection';
 import { Provider } from 'react-redux';
 import styles from './Header.module.css';
 import configureStore from 'redux-mock-store';

@@ -3,10 +3,10 @@ import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import Product from './Product';
-import { getProductById } from '../../../firebase/product';
+import { getProductById } from '../../firebase/product';
 import userEvent from '@testing-library/user-event';
 
-jest.mock('../../../firebase/product');
+jest.mock('../../firebase/product');
 
 const mockStore = configureMockStore();
 
