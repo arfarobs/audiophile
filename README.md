@@ -38,15 +38,42 @@ Users should be able to:
 - See an order confirmation modal after checking out with an order summary
 - **Bonus**: Keep track of what's in the cart, even after refreshing the browser (`localStorage` could be used for this if you're not building out a full-stack app)
 
-### Screenshot
+### Screenshots
 
-![Home Page Desktop View](./src/assets/screenshots/home-page-desktop.png)
-![Home Page Tablet View](./src/assets/screenshots/home-page-tablet.png)
-![Home Page Mobile View](./src/assets/screenshots/home-page-mobile.png)
-![Category Page Desktop View](./src/assets/screenshots/category-page.png)
-![Product Page Desktop View](./src/assets/screenshots/product-page.png)
-![Checkout Page Desktop View](./src/assets/screenshots/checkout-page.png)
-![Order Confirmation Desktop View](./src/assets/screenshots/order-confirmation.png)
+#### Home Page Desktop View
+<a href="./src/assets/screenshots/home-page-desktop.png" target="_blank">
+  <img src="./src/assets/screenshots/home-page-desktop.png" alt="Home Page Desktop View" width="400"/>
+</a>
+
+#### Home Page Tablet View
+<a href="./src/assets/screenshots/home-page-tablet.png" target="_blank">
+  <img src="./src/assets/screenshots/home-page-tablet.png" alt="Home Page Tablet View" width="400"/>
+</a>
+
+#### Home Page Mobile View
+<a href="./src/assets/screenshots/home-page-mobile.png" target="_blank">
+  <img src="./src/assets/screenshots/home-page-mobile.png" alt="Home Page Mobile View" width="400"/>
+</a>
+
+#### Category Page Desktop View
+<a href="./src/assets/screenshots/category-page.png" target="_blank">
+  <img src="./src/assets/screenshots/category-page.png" alt="Category Page Desktop View" width="400"/>
+</a>
+
+#### Product Page Desktop View
+<a href="./src/assets/screenshots/product-page.png" target="_blank">
+  <img src="./src/assets/screenshots/product-page.png" alt="Product Page Desktop View" width="400"/>
+</a>
+
+#### Checkout Page Desktop View
+<a href="./src/assets/screenshots/checkout-page.png" target="_blank">
+  <img src="./src/assets/screenshots/checkout-page.png" alt="Checkout Page Desktop View" width="400"/>
+</a>
+
+#### Order Confirmation Desktop View
+<a href="./src/assets/screenshots/order-confirmation.png" target="_blank">
+  <img src="./src/assets/screenshots/order-confirmation.png" alt="Order Confirmation Desktop View" width="400"/>
+</a>
 
 ### Links
 
@@ -85,7 +112,7 @@ Users should be able to:
 
 I learned so much more, but these are the main things that come to mind when writing this.
 
-## Instructions for running the project locally
+### Instructions for running the project locally
 
 1. Clone the repository
 2. Navigate to the project directory
