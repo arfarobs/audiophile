@@ -9,13 +9,14 @@
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
+	- [Instructions for running the project locally](#instructions-for-running-the-project-locally)
   - [Continued development](#continued-development)
 
 ## Overview
 
-This is a fake e-commerce website that I built. I got the design from frontentmentor.io. If you don't know what that is, it is a website that will give you a Figma design and some basic requirements, and you are left to code the website. 
+Audiophile is a mock e-commerce website built as per the design and requirements provided by [Frontend Mentor](https://www.frontendmentor.io/). It features product listing, cart functionalities, and a checkout process with form validation. It has been developed with a focus on responsive design and is deployed on Netlify.
 
-This project took me a long time, and I learned so much. In its current state, the website is working, but there are still a few improvements that need to be made. 
+In its current state, the website is working, but there are still a few improvements that need to be made. 
 
 If you view this website, please use a valid email when completing the checkout process. You will recieve an automated email from my address on checkout completion.
 
@@ -37,9 +38,19 @@ Users should be able to:
 - See an order confirmation modal after checking out with an order summary
 - **Bonus**: Keep track of what's in the cart, even after refreshing the browser (`localStorage` could be used for this if you're not building out a full-stack app)
 
+### Screenshot
+
+![Home Page Desktop View](./src/assets/screenshots/home-page-desktop.png)
+![Home Page Tablet View](./src/assets/screenshots/home-page-tablet.png)
+![Home Page Mobile View](./src/assets/screenshots/home-page-mobile.png)
+![Category Page Desktop View](./src/assets/screenshots/category-page.png)
+![Product Page Desktop View](./src/assets/screenshots/product-page.png)
+![Checkout Page Desktop View](./src/assets/screenshots/checkout-page.png)
+![Order Confirmation Desktop View](./src/assets/screenshots/order-confirmation.png)
+
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [https://www.frontendmentor.io/solutions/audiophile-react-firebase-jest-reacttestinglibrary-reduxtool-zy2omLVrLs](https://www.frontendmentor.io/solutions/audiophile-react-firebase-jest-reacttestinglibrary-reduxtool-zy2omLVrLs)
 - Live Site URL: [https://audiophile-aef599.netlify.app/](https://audiophile-aef599.netlify.app/)
 
 ## My process
@@ -74,12 +85,18 @@ Users should be able to:
 
 I learned so much more, but these are the main things that come to mind when writing this.
 
+## Instructions for running the project locally
+
+1. Clone the repository
+2. Navigate to the project directory
+3. Install dependencies with `npm install`
+4. Run the project with `npm start`
+
 ### Continued development
 
 Below are some improvements that I may make in the future.
 
 - Optimize for lighthouse report.
-- Refactor unit tests.
 - Implement google auth.
 - Put cart on firebase.
 - Improve global css.
