@@ -42,37 +42,37 @@ Users should be able to:
 
 #### Home Page Desktop View
 <a href="./src/assets/screenshots/home-page-desktop.png" target="_blank">
-  <img src="./src/assets/screenshots/home-page-desktop.png" alt="Home Page Desktop View" width="400"/>
+  <img src="./src/assets/screenshots/home-page-desktop.png" alt="Home Page Desktop View" width="200"/>
 </a>
 
 #### Home Page Tablet View
 <a href="./src/assets/screenshots/home-page-tablet.png" target="_blank">
-  <img src="./src/assets/screenshots/home-page-tablet.png" alt="Home Page Tablet View" width="400"/>
+  <img src="./src/assets/screenshots/home-page-tablet.png" alt="Home Page Tablet View" width="200"/>
 </a>
 
 #### Home Page Mobile View
 <a href="./src/assets/screenshots/home-page-mobile.png" target="_blank">
-  <img src="./src/assets/screenshots/home-page-mobile.png" alt="Home Page Mobile View" width="400"/>
+  <img src="./src/assets/screenshots/home-page-mobile.png" alt="Home Page Mobile View" width="200"/>
 </a>
 
 #### Category Page Desktop View
 <a href="./src/assets/screenshots/category-page.png" target="_blank">
-  <img src="./src/assets/screenshots/category-page.png" alt="Category Page Desktop View" width="400"/>
+  <img src="./src/assets/screenshots/category-page.png" alt="Category Page Desktop View" width="200"/>
 </a>
 
 #### Product Page Desktop View
 <a href="./src/assets/screenshots/product-page.png" target="_blank">
-  <img src="./src/assets/screenshots/product-page.png" alt="Product Page Desktop View" width="400"/>
+  <img src="./src/assets/screenshots/product-page.png" alt="Product Page Desktop View" width="200"/>
 </a>
 
 #### Checkout Page Desktop View
 <a href="./src/assets/screenshots/checkout-page.png" target="_blank">
-  <img src="./src/assets/screenshots/checkout-page.png" alt="Checkout Page Desktop View" width="400"/>
+  <img src="./src/assets/screenshots/checkout-page.png" alt="Checkout Page Desktop View" width="200"/>
 </a>
 
 #### Order Confirmation Desktop View
 <a href="./src/assets/screenshots/order-confirmation.png" target="_blank">
-  <img src="./src/assets/screenshots/order-confirmation.png" alt="Order Confirmation Desktop View" width="400"/>
+  <img src="./src/assets/screenshots/order-confirmation.png" alt="Order Confirmation Desktop View" width="200"/>
 </a>
 
 ### Links
