@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './SignIn.module.css';
 
 // Images
-import facebookIcon from '../../../assets/icons/f_logo_RGB-Blue_58.png';
 import googleIcon from '../../../assets/icons/Google__G__Logo.svg.png';
 import githubIcon from '../../../assets/icons/github-mark.svg';
 import emailIcon from '../../../assets/icons/email.png';
@@ -184,10 +183,6 @@ const SignIn = () => {
 						<button type="button" className={styles.signInWithButton} onClick={() => handleOAuthSignIn('Google')} disabled={loading}>
 							<img src={googleIcon} alt="Google Logo" className={styles.logo} />
 							{isSignUp ? 'Sign Up with Google' : 'Sign In with Google'}
-						</button>
-						<button type="button" className={styles.signInWithButton} onClick={() => handleOAuthSignIn('Facebook')} disabled={loading}>
-							<img src={facebookIcon} alt="Facebook Logo" className={styles.logo} />
-							{isSignUp ? 'Sign Up with Facebook' : 'Sign In with Facebook'}
 						</button>
 						<button type="button" className={styles.signInWithButton} onClick={() => handleOAuthSignIn('GitHub')} disabled={loading}>
 							<img src={githubIcon} alt="GitHub Logo" className={styles.logo} />
