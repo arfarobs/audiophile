@@ -227,17 +227,6 @@ describe('OAuth Sign-In', () => {
 		expect(oAuthSignIn).toHaveBeenCalledWith('Google');
 	});
 
-	it('calls the signInWithFacebook function when Facebook Sign In button is clicked', async () => {
-		const user = userEvent.setup();
-
-		renderSignIn();
-
-		const signInWithFacebookBtn = screen.getByRole('button', { name: 'Facebook Logo Sign In with Facebook' });
-		await user.click(signInWithFacebookBtn);
-
-		expect(oAuthSignIn).toHaveBeenCalledWith('Facebook');
-	});
-
 	it('calls the signInWithGitHub function when GitHub Sign In button is clicked', async () => {
 		const user = userEvent.setup();
 

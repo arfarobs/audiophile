@@ -5,7 +5,6 @@ import {
 	signOut, 
 	GoogleAuthProvider,
 	signInWithPopup,
-	FacebookAuthProvider,
 	GithubAuthProvider
 } from 'firebase/auth';
 import { auth } from './firebase';
@@ -32,9 +31,6 @@ export const oAuthSignIn = async (providerName) => {
 	switch(providerName) {
 	case 'Google':
 		provider = new GoogleAuthProvider();
-		break;
-	case 'Facebook':
-		provider = new FacebookAuthProvider();
 		break;
 	case 'GitHub':
 		provider = new GithubAuthProvider();
