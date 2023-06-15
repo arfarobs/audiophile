@@ -27,18 +27,22 @@ export const resendVerificationEmail = async (email, password) => {
 };
 
 export const oAuthSignIn = async (providerName) => {
-	let provider;
-	switch(providerName) {
-	case 'Google':
-		provider = new GoogleAuthProvider();
-		break;
-	case 'GitHub':
-		provider = new GithubAuthProvider();
-		break;
-	default:
-		throw new Error(`Unsupported provider: ${providerName}`);
-	}
+	try {
+		let provider;
+		switch(providerName) {
+		case 'Google':
+			provider = new GoogleAuthProvider();
+			break;
+		case 'GitHub':
+			provider = new GithubAuthProvider();
+			break;
+		default:
+			throw new Error(`Unsupported provider: ${providerName}`);
+		}
 
-	const result = await signInWithPopup(auth, provider);
-	return result.user;
+		const result = await signInWithPopup(auth, provider);
+		return result.user;
+	} catch (error) {
+		console.error(error);
+	}
 };
