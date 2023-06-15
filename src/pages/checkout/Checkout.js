@@ -15,7 +15,7 @@ import Loading from '../../components/common/loading/Loading';
 
 // Actions
 import { validateOnSubmit, toggleFormIsSubmitting, addOrder } from '../../store/checkoutSlice';
-import { setIsLoading, toggleConfirmation, toggleShowInvalidMessage, toggleShowSubmissionError } from '../../store/uiSlice';
+import { setIsLoading, toggleConfirmation, toggleShowInvalidMessage, toggleShowMessage, toggleShowSubmissionError } from '../../store/uiSlice';
 import { removeAll } from '../../store/cartSlice';
 
 // Data
@@ -28,7 +28,9 @@ import InvalidMessage from './invalid-message/InvalidMessage';
 const Checkout = () => {
 	const { cart } = useSelector(state => state.cart);
 	const { formIsValid, formIsSubmitting, order } = useSelector(state => state.checkout);
-	const { showConfirmation, showInvalidMessage, isLoading, showSubmissionError } = useSelector(state => state.ui);
+	const { showConfirmation, showInvalidMessage, isLoading, showSubmissionError, showSignIn } = useSelector(state => state.ui);
+	const { isSignedIn } = useSelector(state => state.user);
+
 	const [confirmationMessage, setConfirmationMessage] = useState('');
 	const [confirmationCart, setConfirmationCart] = useState([]);
 
@@ -58,11 +60,16 @@ const Checkout = () => {
 
 	useEffect(() => {
 		if (cartLengthRef.current < 1) {
-			window.alert('Oh no! Your cart appears to be empty. Please make sure there is an item in your cart before proceeding to the checkout.');
-			navigate('/');
+			dispatch(toggleShowMessage('emptyCartCheckout'));
 		}
 		dispatch(setIsLoading(false));
-	}, [navigate, dispatch]);
+	}, [dispatch]);
+
+	useEffect(() => {
+		if (!isSignedIn && !showSignIn && cartLengthRef.current > 0) {
+			dispatch(toggleShowMessage('checkoutSignIn'));
+		}
+	}, [isSignedIn, dispatch, showSignIn]);
 
 	useEffect(() => {
 		const submitOrder = async () => {

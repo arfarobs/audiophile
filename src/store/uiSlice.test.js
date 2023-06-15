@@ -5,7 +5,9 @@ import uiSlice, {
 	toggleConfirmation, 
 	toggleShowInvalidMessage, 
 	toggleShowSubmissionError,
-	setIsLoading
+	setIsLoading,
+	toggleShowSignIn,
+	toggleShowMessage
 } from './uiSlice';
 
 describe('uiSlice', () => {
@@ -71,5 +73,19 @@ describe('uiSlice', () => {
 		store.dispatch(toggleCartIsOpen());
 		expect(store.getState().cartIsOpen).toEqual(true);
 		expect(store.getState().menuIsOpen).toEqual(false);
+	});
+
+	it('toggles showSignIn', () => {
+		store.dispatch(toggleShowSignIn());
+		expect(store.getState().showSignIn).toEqual(true);
+		store.dispatch(toggleShowSignIn());
+		expect(store.getState().showSignIn).toEqual(false);
+	});
+
+	it('sets showMessage', () => {
+		store.dispatch(toggleShowMessage('test'));
+		expect(store.getState().showMessage).toEqual('test');
+		store.dispatch(toggleShowMessage(false));
+		expect(store.getState().showMessage).toEqual(false);
 	});
 });

@@ -16,7 +16,7 @@ import Loading from '../../components/common/loading/Loading';
 
 // Actions
 import { addToCart } from '../../store/cartSlice';
-import { setIsLoading } from '../../store/uiSlice';
+import { setIsLoading, toggleShowMessage } from '../../store/uiSlice';
 
 // Firebase
 import { getProductById } from '../../firebase/product';
@@ -29,9 +29,13 @@ import { sortGalleryArray } from './utils/sortGalleryArray';
 const Product = () => {
 	const [productData, setProductData] = useState(null);
 	const [notFound, setNotFound] = useState(false);
+
 	const { isLoading } = useSelector(state => state.ui);
 	const quantity = useSelector(state => state.product.productQuantity);
+	const isSignedIn = useSelector(state => state.user.isSignedIn);
+
 	const { product, category } = useParams();
+
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -53,7 +57,7 @@ const Product = () => {
 
 	const { image, new: newProduct, name, description, price, features, includes, gallery, others, cartImage } = productData || {};
 
-	const handleAddToCart = () => {
+	const createCartItem = () => {
 		const productToAdd = {
 			cartThumbnail: cartImage,
 			productName: getProductName(name),
@@ -62,6 +66,14 @@ const Product = () => {
 		};
 
 		return productToAdd;
+	};
+
+	const handleAddToCart = () => {
+		if (isSignedIn) {
+			dispatch(addToCart(createCartItem()));
+		} else {
+			dispatch(toggleShowMessage('addToCartSignIn'));
+		}
 	};
 
 	return (
@@ -85,7 +97,7 @@ const Product = () => {
 							name={name}
 							description={description}
 							price={price}
-							onClick={() => dispatch(addToCart(handleAddToCart()))}
+							onClick={() => handleAddToCart()}
 						/>
 
 						<ProductFeatures 

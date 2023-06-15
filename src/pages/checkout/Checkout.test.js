@@ -8,10 +8,9 @@ import { configureStore } from '@reduxjs/toolkit';
 import uiReducer from '../../store/uiSlice';
 import cartReducer from '../../store/cartSlice';
 import checkoutReducer from '../../store/checkoutSlice';
+import userReducer from '../../store/userSlice';
 
 const mockStore = configureMockStore();
-
-window.alert = jest.fn();
 
 const mockNavigate = jest.fn();
 
@@ -72,7 +71,7 @@ const validCheckout = {
 	}
 };
 
-const renderCheckout = (cart, checkout) => {
+const renderCheckout = (cart, checkout, isSignedIn = true, showSignIn = false) => {
 	const store = mockStore({
 		cart: {
 			cart: cart || [],
@@ -83,6 +82,10 @@ const renderCheckout = (cart, checkout) => {
 			showInvalidMessage: false,
 			isLoading: false,
 			showSubmissionError: false,
+			showSignIn
+		},
+		user: {
+			isSignedIn
 		}
 	});
 	
@@ -100,37 +103,8 @@ const renderCheckout = (cart, checkout) => {
 };
 
 describe('Checkout rendering', () => {
-	let alertMock;
-
-	beforeEach(() => {
-		alertMock = jest.spyOn(window, 'alert');
-		mockNavigate.mockReset();
-	});
-
-	afterEach(() => {
-		alertMock.mockReset();
-	});
-
 	it('renders without crashing', () => {
 		renderCheckout(mockCart);
-	});
-
-	it('checks for items in the cart and shows an alert and navigates if the cart is empty', () => {
-		const { store } = renderCheckout();
-	
-		expect(store.getState().cart.cart).toHaveLength(0);
-		expect(alertMock).toHaveBeenCalledTimes(1);
-		expect(alertMock).toHaveBeenCalledWith('Oh no! Your cart appears to be empty. Please make sure there is an item in your cart before proceeding to the checkout.');
-		expect(mockNavigate).toHaveBeenCalledTimes(1);
-		expect(mockNavigate).toHaveBeenCalledWith('/');
-	});
-
-	it('does not show an alert and does not navigate if the cart is not empty', () => {
-		const { store } = renderCheckout(mockCart);
-	
-		expect(store.getState().cart.cart).toHaveLength(1);
-		expect(alertMock).toHaveBeenCalledTimes(0);
-		expect(mockNavigate).toHaveBeenCalledTimes(0);
 	});
 
 	it('dispatches setIsLoading with the correct value when the component mounts', () => {
@@ -239,6 +213,7 @@ describe('submitOrder function', () => {
 				cart: cartReducer,
 				checkout: checkoutReducer,
 				ui: uiReducer,
+				user: userReducer
 			},
 			preloadedState: {
 				cart: initialCartState
@@ -401,5 +376,43 @@ describe('Go back button', () => {
 		await user.click(goBackButton);
 	
 		expect(mockNavigate).toHaveBeenCalledWith(-1);
+	});
+});
+
+describe('store dispatches', () => {
+	it('dispatches toggleShowMessage with the correct argument if cart is empty', async () => {
+		const { store } = renderCheckout();
+	
+		expect(store.dispatch).toHaveBeenCalledWith({ type: 'ui/toggleShowMessage', payload: 'emptyCartCheckout' });
+	});
+
+	it('does not dispatch toggleShowMessage with the correct argument if cart is empty', () => {
+		const { store } = renderCheckout(mockCart);
+	
+		expect(store.dispatch).not.toHaveBeenCalledWith({ type: 'ui/toggleShowMessage', payload: 'emptyCartCheckout' });
+	});
+
+	it('dispatches toggleShowMessage with the correct argument if !isSignedIn, !showSignIn, and cart is not empty', () => {
+		const { store } = renderCheckout(mockCart, invalidCheckout, false);
+	
+		expect(store.dispatch).toHaveBeenCalledWith({ type: 'ui/toggleShowMessage', payload: 'checkoutSignIn' });
+	});
+
+	it('does not dispatch toggleShowMessage with the correct argument if isSignedIn, !showSignIn, and cart is not empty', () => {
+		const { store } = renderCheckout(mockCart, invalidCheckout, true);
+	
+		expect(store.dispatch).not.toHaveBeenCalledWith({ type: 'ui/toggleShowMessage', payload: 'checkoutSignIn' });
+	});
+
+	it('does not dispatch toggleShowMessage with the correct argument if !isSignedIn, showSignIn, and cart is not empty', () => {
+		const { store } = renderCheckout(mockCart, invalidCheckout, false, true);
+
+		expect(store.dispatch).not.toHaveBeenCalledWith({ type: 'ui/toggleShowMessage', payload: 'checkoutSignIn' });
+	});
+
+	it('does not dispatch toggleShowMessage with the correct argument if !isSignedIn, !showSignIn, and cart is empty', () => {
+		const { store } = renderCheckout([], invalidCheckout, false);
+
+		expect(store.dispatch).not.toHaveBeenCalledWith({ type: 'ui/toggleShowMessage', payload: 'checkoutSignIn' });
 	});
 });

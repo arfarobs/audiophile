@@ -7,7 +7,7 @@ import styles from './Button.module.css';
 // Components
 import { NavLink } from 'react-router-dom';
 
-const Button = ({type, btnStyle, color, to, title, onClick}) => {
+const Button = ({type, btnStyle, color, to, title, onClick, disabled}) => {
 
 	const attributes = {
 		className: classNames(styles[btnStyle], styles[color]),
@@ -26,6 +26,7 @@ const Button = ({type, btnStyle, color, to, title, onClick}) => {
 	) : (
 		<button 
 			{...attributes}
+			disabled={disabled}
 		>{title}</button>
 	);
 };
@@ -36,7 +37,8 @@ Button.propTypes = {
 	color: PropTypes.string,
 	to: PropTypes.string,
 	title: PropTypes.string.isRequired,
-	onClick: PropTypes.func
+	onClick: PropTypes.func,
+	disabled: PropTypes.bool
 };
 
 export default Button;

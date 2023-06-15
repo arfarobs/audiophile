@@ -12,7 +12,9 @@ const mockState = {
 		cartIsOpen: false,
 		showConfirmation: false,
 		showInvalidMessage: false,
-		showSubmissionError: false
+		showSubmissionError: false,
+		showSignIn: false,
+		showMessage: false
 	}
 };
 
@@ -40,7 +42,7 @@ describe('Overlay', () => {
 		expect(overlay).toBeInTheDocument();
 	});
 
-	it('should not have the show class when menuIsOpen, cartIsOpen, showConfirmation, showInvalidMessage, and showSubmissionError are false', () => {
+	it('should not have the show class when menuIsOpen, cartIsOpen, showConfirmation, showInvalidMessage, showSignIn, showMessage, and showSubmissionError are false', () => {
 		renderOverlay(mockState);
 
 		const overlay = screen.getByTestId('overlay');
@@ -55,7 +57,9 @@ describe('Overlay', () => {
 				cartIsOpen: false,
 				showConfirmation: false,
 				showInvalidMessage: false,
-				showSubmissionError: false
+				showSubmissionError: false,
+				showSignIn: false,
+				showMessage: false
 			}
 		};
 
@@ -73,7 +77,9 @@ describe('Overlay', () => {
 				cartIsOpen: true,
 				showConfirmation: false,
 				showInvalidMessage: false,
-				showSubmissionError: false
+				showSubmissionError: false,
+				showSignIn: false,
+				showMessage: false
 			}
 		};
 
@@ -91,7 +97,9 @@ describe('Overlay', () => {
 				cartIsOpen: false,
 				showConfirmation: true,
 				showInvalidMessage: false,
-				showSubmissionError: false
+				showSubmissionError: false,
+				showSignIn: false,
+				showMessage: false
 			}
 		};
 
@@ -109,7 +117,9 @@ describe('Overlay', () => {
 				cartIsOpen: false,
 				showConfirmation: false,
 				showInvalidMessage: true,
-				showSubmissionError: false
+				showSubmissionError: false,
+				showSignIn: false,
+				showMessage: false
 			}
 		};
 
@@ -127,7 +137,49 @@ describe('Overlay', () => {
 				cartIsOpen: false,
 				showConfirmation: false,
 				showInvalidMessage: false,
-				showSubmissionError: true
+				showSubmissionError: true,
+				showSignIn: false,
+				showMessage: false
+			}
+		};
+
+		renderOverlay(state);
+
+		const overlay = screen.getByTestId('overlay');
+
+		expect(overlay).toHaveClass('overlay show');
+	});
+
+	it('should have the show class when showSignIn is true', () => {
+		const state = {
+			ui: {
+				menuIsOpen: false,
+				cartIsOpen: false,
+				showConfirmation: false,
+				showInvalidMessage: false,
+				showSubmissionError: false,
+				showSignIn: true,
+				showMessage: false
+			}
+		};
+
+		renderOverlay(state);
+
+		const overlay = screen.getByTestId('overlay');
+
+		expect(overlay).toHaveClass('overlay show');
+	});
+
+	it('should have the show class when showMessage is true', () => {
+		const state = {
+			ui: {
+				menuIsOpen: false,
+				cartIsOpen: false,
+				showConfirmation: false,
+				showInvalidMessage: false,
+				showSubmissionError: false,
+				showSignIn: false,
+				showMessage: true
 			}
 		};
 
@@ -177,6 +229,28 @@ describe('Overlay', () => {
 		await user.click(overlay);
 
 		expect(store.dispatch).toHaveBeenCalledWith({ type: 'ui/toggleCartIsOpen' });
+		expect(store.dispatch).toHaveBeenCalledTimes(1);
+	});
+	
+	it('should dispatch toggleDhowSignIn when showSignIn is true and the overlay is clicked', async () => {
+		const user = userEvent.setup();
+
+		const { store } = renderOverlay({
+			ui: {
+				menuIsOpen: false,
+				cartIsOpen: false,
+				showConfirmation: false,
+				showInvalidMessage: false,
+				showSubmissionError: false,
+				showSignIn: true
+			}
+		});
+
+		const overlay = screen.getByTestId('overlay');
+
+		await user.click(overlay);
+
+		expect(store.dispatch).toHaveBeenCalledWith({ type: 'ui/toggleShowSignIn' });
 		expect(store.dispatch).toHaveBeenCalledTimes(1);
 	});
 });

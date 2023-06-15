@@ -124,7 +124,6 @@ I learned so much more, but these are the main things that come to mind when wri
 Below are some improvements that I may make in the future.
 
 - Optimize for lighthouse report.
-- Implement google auth.
 - Put cart on firebase.
 - Improve global css.
 - imporve button component add add to cart to it and maybe go to checkout.

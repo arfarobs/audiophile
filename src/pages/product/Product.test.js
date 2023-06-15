@@ -10,7 +10,7 @@ jest.mock('../../firebase/product');
 
 const mockStore = configureMockStore();
 
-const renderProduct = (isLoading = false) => {
+const renderProduct = (isLoading = false, isSignedIn = true) => {
 	const store = mockStore({
 		ui: {
 			isLoading
@@ -18,6 +18,9 @@ const renderProduct = (isLoading = false) => {
 		product: {
 			productQuantity: 1,
 		},
+		user: {
+			isSignedIn
+		}
 	});
 
 	store.dispatch = jest.fn();
@@ -233,7 +236,7 @@ describe('adding a product to cart', () => {
 		jest.clearAllMocks();
 	});
 
-	it('adds the correct object to cart', async () => {
+	it('adds the correct object to cart if user is signed in', async () => {
 		const user = userEvent.setup();
 
 		const {store} = renderProduct();
@@ -250,5 +253,17 @@ describe('adding a product to cart', () => {
 		};
 
 		waitFor(() => expect(store.dispatch).toHaveBeenCalledWith({ type: 'cart/addProduct', payload: expectedProductToAdd }));
+	});
+
+	it('dispatches toggleShowMessage with the correct argument if user is not signed in', async () => {
+		const user = userEvent.setup();
+
+		const {store} = renderProduct(false, true);
+
+		const addToCartButton = await screen.findByRole('button', { name: /add to cart/i });
+
+		await user.click(addToCartButton);
+
+		waitFor(() => expect(store.dispatch).toHaveBeenCalledWith({ type: 'ui/toggleShowMessage', payload: 'addToCartSignIn' }));
 	});
 });

@@ -117,7 +117,6 @@ describe('rendering', () => {
 		const name = screen.getByRole('heading', {name: /test name/i});
 
 		expect(name).toHaveClass('h1');
-		screen.debug();
 	});
 });
 

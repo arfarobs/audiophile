@@ -11,6 +11,8 @@ import CategoryNav from '../common/category-nav/CategoryNav';
 import Cart from '../common/cart/Cart';
 import BestGear from '../common/best-gear/BestGear';
 import Footer from '../common/footer/Footer';
+import SignIn from '../common/sign-in/SignIn';
+import Message from '../common/message/Message';
 
 //Actions
 
@@ -30,7 +32,7 @@ const componentMap = {
 };
 
 const RouteLayout = () => {
-	const { cartIsOpen } = useSelector(state => state.ui);
+	const { cartIsOpen, showSignIn, showMessage } = useSelector(state => state.ui);
 	const location = useLocation();
 	const path = location.pathname;
 	const { 
@@ -46,6 +48,8 @@ const RouteLayout = () => {
 			<Header links={navigationLinks} />
 			<Overlay />
 			{cartIsOpen && <Cart />}
+			{showSignIn && <SignIn />}
+			{showMessage && <Message />}
 			<main className={path !== '/' ? styles.mainDown: undefined}>
 				{banner && <Banner />}
 				{categoryNavTop && <CategoryNav where="page" links={navigationLinks.slice(1)} testid="categoryNavTop" />}
