@@ -28,14 +28,14 @@
 }
 
 .invalidLabel {
-	color: #CD2C2C !important;
+	color: var(--error-red) !important;
 }
 
 .errorMessage {
 	position: absolute;
 	right: 0;
 	font-weight: 500;
-	color: #CD2C2C;
+	color: var(--error-red);
 }
 
 .input {
@@ -58,7 +58,7 @@
 }
 
 .invalidInput {
-	border: 2px solid #CD2C2C;
+	border: 2px solid var(--error-red);
 }
 
 .radio {

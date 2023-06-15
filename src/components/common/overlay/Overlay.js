@@ -5,22 +5,31 @@ import classNames from 'classnames';
 import styles from './Overlay.module.css';
 
 // Actions
-import { toggleCartIsOpen, toggleMenuIsOpen } from '../../../store/uiSlice';
+import { toggleCartIsOpen, toggleMenuIsOpen, toggleShowSignIn } from '../../../store/uiSlice';
 
 const Overlay = () => {
-	const { menuIsOpen, cartIsOpen, showConfirmation, showInvalidMessage, showSubmissionError } = useSelector(state => state.ui);
+	const { 
+		menuIsOpen, 
+		cartIsOpen, 
+		showConfirmation, 
+		showInvalidMessage, 
+		showSubmissionError, 
+		showSignIn,
+		showMessage
+	} = useSelector(state => state.ui);
 	const dispatch = useDispatch();
 
 	const handleOverlayClick = () => {
 		menuIsOpen && dispatch(toggleMenuIsOpen());
 		cartIsOpen && dispatch(toggleCartIsOpen());
+		showSignIn && dispatch(toggleShowSignIn());
 	};
 
 	return (
 		<div 
 			className={classNames(
 				styles.overlay, 
-				{[styles.show]: menuIsOpen || cartIsOpen || showConfirmation || showInvalidMessage || showSubmissionError})} 
+				{[styles.show]: menuIsOpen || cartIsOpen || showConfirmation || showInvalidMessage || showSubmissionError || showSignIn || showMessage})} 
 			onClick={handleOverlayClick}
 			data-testid="overlay"
 		>

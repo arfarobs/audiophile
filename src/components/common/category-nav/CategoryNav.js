@@ -1,20 +1,24 @@
 import classNames from 'classnames';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
 
 // CSS
 import styles from './CategoryNav.module.css';
 
 // Actions
-import { toggleMenuIsOpen } from '../../../store/uiSlice';
+import { toggleMenuIsOpen, toggleShowSignIn } from '../../../store/uiSlice';
 
 // Components
 import NavItem from '../nav-item/NavItem';
+import Button from '../button/Button';
 
 
+const CategoryNav = ({where, links, testid, user, handleSignOut, testLocation}) => {
+	const { showMessage } = useSelector(state => state.ui);
 
-const CategoryNav = ({where, links, testid}) => {
 	const dispatch = useDispatch();
+	const location = testLocation || useLocation().pathname;
 
 	return (
 		<nav 
@@ -33,6 +37,22 @@ const CategoryNav = ({where, links, testid}) => {
 				))}
 
 			</ul>
+			{where === 'menu' && location !== '/checkout' ? (
+				<Button 
+					type="button"
+					btnStyle="signInBtnMobile"
+					color="orange"
+					title={user ? 'Sign Out' : 'Sign In'}
+					onClick={() => {
+						if (user) {
+							handleSignOut();
+							dispatch(toggleMenuIsOpen());
+						} else {
+							!showMessage && dispatch(toggleShowSignIn());
+						}
+					}}
+				/>
+			) : null}
 		</nav>
 	);
 };
@@ -40,7 +60,10 @@ const CategoryNav = ({where, links, testid}) => {
 CategoryNav.propTypes = {
 	where: PropTypes.string.isRequired,
 	links: PropTypes.array.isRequired,
-	testid: PropTypes.string
+	testid: PropTypes.string,
+	user: PropTypes.object,
+	handleSignOut: PropTypes.func,
+	testLocation: PropTypes.string
 };
 
 export default CategoryNav;

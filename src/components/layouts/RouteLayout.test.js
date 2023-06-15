@@ -7,10 +7,12 @@ import { routerConfig } from '../../routes/routes';
 
 const mockStore = configureStore();
 
-const renderRouteLayout = (cartIsOpen = false, path = '/') => {
+const renderRouteLayout = (cartIsOpen = false, path = '/', showSignIn = false, showMessage = false) => {
 	const store = mockStore({
 		ui: {
-			cartIsOpen: cartIsOpen
+			cartIsOpen,
+			showSignIn,
+			showMessage
 		},
 		cart: {
 			cart: [
@@ -23,6 +25,9 @@ const renderRouteLayout = (cartIsOpen = false, path = '/') => {
 		},
 		product: {
 			productQuantity: 1
+		},
+		user: {
+			isSignedIn: false,
 		},
 		checkout: {
 			paymentMethod: 'e-money',
@@ -161,5 +166,37 @@ describe('RouteLayout', () => {
 		expect(pathname).toBe('/checkout');
 		expect(routeLayout).toHaveClass('moveBodyDown');
 		expect(main).toHaveClass('mainDown');
+	});
+
+	it('renders SignIn component when showSignIn is true', () => {
+		renderRouteLayout(false, '/', true);
+
+		const signInContainer = screen.getByTestId('signInContainer');
+
+		expect(signInContainer).toBeInTheDocument();
+	});
+
+	it('does not render SignIn component when showSignIn is false', () => {
+		renderRouteLayout();
+
+		const signInContainer = screen.queryByTestId('signInContainer');
+
+		expect(signInContainer).not.toBeInTheDocument();
+	});
+
+	it('renders message when showMessage is true', () => {
+		renderRouteLayout(false, '/', false, true);
+
+		const messageContainer = screen.getByTestId('messageContainer');
+
+		expect(messageContainer).toBeInTheDocument();
+	});
+
+	it('does not render message when showMessage is false', () => {
+		renderRouteLayout();
+
+		const messageContainer = screen.queryByTestId('messageContainer');
+
+		expect(messageContainer).not.toBeInTheDocument();
 	});
 });

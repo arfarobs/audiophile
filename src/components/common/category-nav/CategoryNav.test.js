@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
-import { toggleMenuIsOpen } from '../../../store/uiSlice';
+import { toggleMenuIsOpen, toggleShowSignIn } from '../../../store/uiSlice';
 
 const mockStore = configureStore();
 
@@ -15,8 +15,12 @@ const mockLinks = [
 	{ title: 'link 4', to: './link4', thumbnail: 'thumbnail4.jpg' }
 ];
 
-const renderCategoryNav = (props = {}) => {
-	const store = mockStore({});
+const renderCategoryNav = (props = {}, showMessage = false) => {
+	const store = mockStore({
+		ui: {
+			showMessage
+		}
+	});
 
 	store.dispatch = jest.fn();
 
@@ -78,6 +82,63 @@ describe('CategoryNav', () => {
 
 		await user.click(navItem);
 
+		expect(store.dispatch).toHaveBeenCalledWith(toggleMenuIsOpen());
+	});
+
+	it('renders a sign in button when where prop equals "menu" and location does not equal "/checkout"', () => {
+		renderCategoryNav({where: 'menu', links: mockLinks});
+
+		const signInBtn = screen.getByRole('button', {name: /sign in/i});
+
+		expect(signInBtn).toBeInTheDocument();
+	});
+
+	it('does not render a sign in button when where prop equals "menu" and location equals "/checkout"', () => {
+		renderCategoryNav({where: 'menu', links: mockLinks, testLocation: '/checkout'});
+
+		const signInBtn = screen.queryByRole('button', {name: /sign in/i});
+
+		expect(signInBtn).not.toBeInTheDocument();
+	});
+
+	it('does not render a sign in button when where prop does not equal "menu"', () => {
+		renderCategoryNav({where: 'header', links: mockLinks});
+
+		const signInBtn = screen.queryByRole('button', {name: /sign in/i});
+
+		expect(signInBtn).not.toBeInTheDocument();
+	});
+
+	it('dispatches toggleShowSignIn action when sign in button is clicked and showMessage is false', async () => {
+		const user = userEvent.setup();
+		const { store } = renderCategoryNav({where: 'menu', links: mockLinks});
+		const signInBtn = screen.getByRole('button', {name: /sign in/i});
+	
+		await user.click(signInBtn);
+	
+		expect(store.dispatch).toHaveBeenCalledWith(toggleShowSignIn());
+	});
+	
+	it('does not dispatch toggleShowSignIn action when sign in button is clicked and showMessage is true', async () => {
+		const user = userEvent.setup();
+		const { store } = renderCategoryNav({where: 'menu', links: mockLinks}, true);
+		const signInBtn = screen.getByRole('button', {name: /sign in/i});
+	
+		await user.click(signInBtn);
+	
+		expect(store.dispatch).not.toHaveBeenCalledWith(toggleShowSignIn());
+	});
+	
+	it('calls handleSignOut and dispatches toggleMenuIsOpen action when sign out button is clicked', async () => {
+		const user = userEvent.setup();
+		const handleSignOut = jest.fn();
+		const { store } = renderCategoryNav({where: 'menu', links: mockLinks, user: {}, handleSignOut});
+	
+		const signOutBtn = screen.getByRole('button', {name: /sign out/i});
+	
+		await user.click(signOutBtn);
+	
+		expect(handleSignOut).toHaveBeenCalled();
 		expect(store.dispatch).toHaveBeenCalledWith(toggleMenuIsOpen());
 	});
 });

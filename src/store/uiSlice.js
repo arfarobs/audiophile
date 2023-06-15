@@ -6,7 +6,9 @@ const initialState = {
 	showConfirmation: false,
 	showInvalidMessage: false,
 	isLoading: true,
-	showSubmissionError: false
+	showSubmissionError: false,
+	showSignIn: false,
+	showMessage: false
 };
 
 export const uiSlice = createSlice({
@@ -36,6 +38,12 @@ export const uiSlice = createSlice({
 		},
 		toggleShowSubmissionError (state) {
 			state.showSubmissionError = !state.showSubmissionError;
+		},
+		toggleShowSignIn (state) {
+			state.showSignIn = !state.showSignIn;
+		},
+		toggleShowMessage (state, action) {
+			state.showMessage = action.payload;
 		}
 	}
 });
@@ -46,7 +54,9 @@ export const {
 	toggleConfirmation, 
 	toggleShowInvalidMessage, 
 	setIsLoading, 
-	toggleShowSubmissionError 
+	toggleShowSubmissionError,
+	toggleShowSignIn,
+	toggleShowMessage
 } = uiSlice.actions;
 
 export default uiSlice.reducer;

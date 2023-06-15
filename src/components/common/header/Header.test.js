@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, createEvent } from '@testing-library/react';
+import { render, screen, fireEvent, createEvent, waitFor } from '@testing-library/react';
 import Header from './Header';
 import * as ScrollDirectionHook from '../../../hooks/useScrollDirection';
 import { Provider } from 'react-redux';
@@ -6,7 +6,8 @@ import styles from './Header.module.css';
 import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
-import { toggleCartIsOpen, toggleMenuIsOpen } from '../../../store/uiSlice';
+import { toggleCartIsOpen, toggleMenuIsOpen, toggleShowSignIn, toggleShowMessage } from '../../../store/uiSlice';
+import { signOut } from '../../../store/userSlice';
 
 
 const mockStore = configureStore();
@@ -38,7 +39,8 @@ const renderHeader = (props = {},
 	menuIsOpen = false, 
 	cartIsOpen = false, 
 	showConfirmation = false, 
-	showInvalidMessage = false
+	showInvalidMessage = false,
+	isSignedIn = false
 ) => {
 	const store = mockStore({
 		ui: {
@@ -47,6 +49,9 @@ const renderHeader = (props = {},
 			showConfirmation,
 			showInvalidMessage,
 		},
+		user: {
+			isSignedIn
+		}
 	});
 	store.dispatch = jest.fn();
 
@@ -76,6 +81,22 @@ describe('Header rendering', () => {
 		const navigations = screen.getAllByRole('navigation');
 
 		expect(navigations.length).toBe(2);
+	});
+
+	it('renders sign in button when user is not signed in', () => {
+		renderHeader({links: mockLinks}, false, false, false, false, false);
+
+		const signInButton = screen.getAllByRole('button', { name: /Sign In/i })[0];
+
+		expect(signInButton).toBeInTheDocument();
+	});
+
+	it('renders sign out button when user is signed in', () => {
+		renderHeader({links: mockLinks}, false, false, false, false, true);
+
+		const signOutButton = screen.getByRole('button', { name: /Sign Out/i });
+
+		expect(signOutButton).toBeInTheDocument();
 	});
 });
 
@@ -119,16 +140,54 @@ describe('Header functionality', () => {
 		expect(store.dispatch).toHaveBeenCalledWith(toggleCartIsOpen());
 		expect(store.dispatch).not.toHaveBeenCalledWith(toggleMenuIsOpen());
 	});
-	
+
+	it('dispatches toggleShowSignIn when sign in button is clicked', async () => {
+		const user = userEvent.setup();
+		const { store } = renderHeader({links: mockLinks}, false, false, false, false, false);
+
+		const signInButton = screen.getAllByRole('button', { name: /Sign In/i })[0];
+
+		await user.click(signInButton);
+
+		expect(store.dispatch).toHaveBeenCalledWith(toggleShowSignIn());
+	});
+
+	it('dispatches signOut when sign out button is clicked', async () => {
+		const user = userEvent.setup();
+		const { store } = renderHeader({links: mockLinks}, false, false, false, false, true);
+
+		const signOutButton = screen.getByRole('button', { name: /Sign Out/i });
+
+		await user.click(signOutButton);
+
+		expect(store.dispatch).toHaveBeenCalledWith(signOut());
+	});
+
+	it('dispatches toggleShowMessage when sign out button is clicked', async () => {
+		const user = userEvent.setup();
+		const { store } = renderHeader({links: mockLinks}, false, false, false, false, true);
+
+		const signOutButton = screen.getByRole('button', { name: /Sign Out/i });
+
+		await user.click(signOutButton);
+
+		expect(store.dispatch).toHaveBeenCalledWith(toggleShowMessage('signOutSuccess'));
+	});
+
 	it('does not dispatch any action if menu and cart are closed and user clicks on headerBar', async () => {
 		const user = userEvent.setup();
 		const { store } = renderHeader({links: mockLinks});
 	
 		const headerBar = screen.getByTestId('headerBar');
+
+		await waitFor(() => {
+			expect(store.dispatch).toHaveBeenCalledWith(signOut());
+			expect(store.dispatch).toHaveBeenCalledTimes(1);
+		});
 	
 		await user.click(headerBar);
 	
-		expect(store.dispatch).not.toHaveBeenCalled();
+		expect(store.dispatch).toHaveBeenCalledTimes(1);
 	});
 });
 
@@ -151,36 +210,53 @@ describe('menu', () => {
 
 	it('should not disatch any action if showConfirmation === true and menu button is clicked', async () => {
 		const user = userEvent.setup();
-		const { store } = renderHeader({links: mockLinks}, false, false, true);
+		const { store } = renderHeader({links: mockLinks}, false, false, true, true);
 	
-		const menuButton = screen.getAllByRole('button')[0];
-	
+		const menuButton = screen.getByTestId('menuBtn');
+
+		await waitFor(() => {
+			expect(store.dispatch).toHaveBeenCalledWith(signOut());
+			expect(store.dispatch).toHaveBeenCalledTimes(1);
+		});
+
 		await user.click(menuButton);
 	
-		expect(store.dispatch).not.toHaveBeenCalled();
+		expect(store.dispatch).not.toHaveBeenCalledWith(toggleMenuIsOpen());
+		expect(store.dispatch).toHaveBeenCalledTimes(1);
 	});
 
 	it('should not disatch any action if showInvalidMessage === true and menu button is clicked', async () => {
 		const user = userEvent.setup();
 		const { store } = renderHeader({links: mockLinks}, false, false, false, true);
 	
-		const menuButton = screen.getAllByRole('button')[0];
-	
+		const menuButton = screen.getByTestId('menuBtn');
+
+		await waitFor(() => {
+			expect(store.dispatch).toHaveBeenCalledWith(signOut());
+			expect(store.dispatch).toHaveBeenCalledTimes(1);
+		});
+
 		await user.click(menuButton);
 	
-		expect(store.dispatch).not.toHaveBeenCalled();
+		expect(store.dispatch).not.toHaveBeenCalledWith(toggleMenuIsOpen());
+		expect(store.dispatch).toHaveBeenCalledTimes(1);
 	});
 
 	it('should dispatch toggleMenuIsOpen if menu button is clicked and showConfirmation === false and showInvalidMessage === false', async () => {
 		const user = userEvent.setup();
 		const { store } = renderHeader({links: mockLinks});
 	
-		const menuButton = screen.getAllByRole('button')[0];
+		const menuButton = screen.getByTestId('menuBtn');
+
+		await waitFor(() => {
+			expect(store.dispatch).toHaveBeenCalledWith(signOut());
+			expect(store.dispatch).toHaveBeenCalledTimes(1);
+		});
 	
 		await user.click(menuButton);
 	
 		expect(store.dispatch).toHaveBeenCalledWith(toggleMenuIsOpen());
-		expect(store.dispatch).toHaveBeenCalledTimes(1);
+		expect(store.dispatch).toHaveBeenCalledTimes(2);
 	});
 
 });
@@ -230,39 +306,62 @@ describe('cart', () => {
 		const user = userEvent.setup();
 		const { store } = renderHeader({links: mockLinks}, false, false, true);
 	
-		const cartButton = screen.getAllByRole('button')[1];
+		const cartButton = screen.getByTestId('cartBtn');
+
+		await waitFor(() => {
+			expect(store.dispatch).toHaveBeenCalledWith(signOut());
+			expect(store.dispatch).toHaveBeenCalledTimes(1);
+		});
 	
 		await user.click(cartButton);
 	
-		expect(store.dispatch).not.toHaveBeenCalled();
+		expect(store.dispatch).not.toHaveBeenCalledWith(toggleCartIsOpen());
+		expect(store.dispatch).toHaveBeenCalledTimes(1);
 	});
 
 	it('should not disatch any action if showInvalidMessage === true and cart button is clicked', async () => {
 		const user = userEvent.setup();
 		const { store } = renderHeader({links: mockLinks}, false, false, false, true);
 	
-		const cartButton = screen.getAllByRole('button')[1];
+		const cartButton = screen.getByTestId('cartBtn');
+
+		await waitFor(() => {
+			expect(store.dispatch).toHaveBeenCalledWith(signOut());
+			expect(store.dispatch).toHaveBeenCalledTimes(1);
+		});
 	
 		await user.click(cartButton);
 	
-		expect(store.dispatch).not.toHaveBeenCalled();
+		expect(store.dispatch).not.toHaveBeenCalledWith(toggleCartIsOpen());
+		expect(store.dispatch).toHaveBeenCalledTimes(1);
 	});
 
 	it('should dispatch toggleCartIsOpen if cart button is clicked and showConfirmation === false and showInvalidMessage === false', async () => {
 		const user = userEvent.setup();
 		const { store } = renderHeader({links: mockLinks});
 	
-		const cartButton = screen.getAllByRole('button')[1];
+		const cartButton = screen.getByTestId('cartBtn');
+
+		await waitFor(() => {
+			expect(store.dispatch).toHaveBeenCalledWith(signOut());
+			expect(store.dispatch).toHaveBeenCalledTimes(1);
+		});
 	
 		await user.click(cartButton);
 	
 		expect(store.dispatch).toHaveBeenCalledWith(toggleCartIsOpen());
-		expect(store.dispatch).toHaveBeenCalledTimes(1);
+		expect(store.dispatch).toHaveBeenCalledTimes(2);
 	});
 });
 
+describe('checkout location', () => {
+	it('does not render the sign in/out button when the current location is /checkout', () => {
+		renderHeader({links: mockLinks, testLocation: '/checkout'}, false, false, false, false, false);
 
+		const signInButton = screen.queryByRole('button', { name: /Sign In/i });
+		const signOutButton = screen.queryByRole('button', { name: /Sign Out/i });
 
-
-
-
+		expect(signInButton).not.toBeInTheDocument();
+		expect(signOutButton).not.toBeInTheDocument();
+	});
+});
