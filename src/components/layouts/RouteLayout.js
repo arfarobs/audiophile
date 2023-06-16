@@ -14,8 +14,6 @@ import Footer from '../common/footer/Footer';
 import SignIn from '../common/sign-in/SignIn';
 import Message from '../common/message/Message';
 
-//Actions
-
 // Data
 import navigationLinks from '../../data/navigationLinks';
 
