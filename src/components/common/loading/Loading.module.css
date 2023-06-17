@@ -5,10 +5,10 @@
 	align-items: center;
 	z-index: 3;
 	width: 100%;
+	background: var(--pure-white);
 }
 
 .loading {
-	background: var(--pure-white);
 	height: 100vh;
 }
 

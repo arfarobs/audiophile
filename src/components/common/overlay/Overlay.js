@@ -17,6 +17,7 @@ const Overlay = () => {
 		showSignIn,
 		showMessage
 	} = useSelector(state => state.ui);
+	const { formIsSubmitting } = useSelector(state => state.checkout);
 	const dispatch = useDispatch();
 
 	const handleOverlayClick = () => {
@@ -29,7 +30,7 @@ const Overlay = () => {
 		<div 
 			className={classNames(
 				styles.overlay, 
-				{[styles.show]: menuIsOpen || cartIsOpen || showConfirmation || showInvalidMessage || showSubmissionError || showSignIn || showMessage})} 
+				{[styles.show]: menuIsOpen || cartIsOpen || showConfirmation || showInvalidMessage || showSubmissionError || showSignIn || showMessage || formIsSubmitting})} 
 			onClick={handleOverlayClick}
 			data-testid="overlay"
 		>
