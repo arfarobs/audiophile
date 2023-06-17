@@ -10,7 +10,7 @@ const Loading = ({ purpose }) => {
 	return (
 		<section className={classNames(styles.section, styles[purpose])} data-testid={'loadingSection'}>
 			<img className={styles.img} src={headphones} alt="Loading please wait." />
-			{purpose === 'submit' && <h1 className="heading-1">Submitting</h1>}
+			{purpose === 'submit' && <h1 className={classNames('heading-1', styles.h1)}>Submitting</h1>}
 		</section>
 	);
 };

@@ -4,24 +4,34 @@
 	justify-content: center;
 	align-items: center;
 	z-index: 3;
-	width: 100%;
 	background: var(--pure-white);
 }
 
 .loading {
+	width: 100%;
 	height: 100vh;
 }
 
 .submit {
+	--spacing: 24px;
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	width: calc(100% - (var(--side) * 2));
+	max-width: 540px;
+	border-radius: 8px;
+	padding: var(--spacing);
 }
 
 .img {
 	animation: rotation 2s infinite linear;
-	margin-bottom: 32px;
+	margin-bottom: var(--spacing);
+	width: 128px;
+}
+
+.h1 {
+	font-size: 24px;
 }
 
 @keyframes rotation {
@@ -33,3 +43,17 @@
 	}
 }
 
+@media only screen and (min-width: 768px) {
+	.submit {
+		--spacing: 32px;
+	}
+
+	.img {
+		scale: 1;
+		width: unset;
+	}
+
+	.h1 {
+		font-size: 56px;
+	}
+}
