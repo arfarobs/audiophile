@@ -112,13 +112,6 @@ Users should be able to:
 
 I learned so much more, but these are the main things that come to mind when writing this.
 
-### Instructions for running the project locally
-
-1. Clone the repository
-2. Navigate to the project directory
-3. Install dependencies with `npm install`
-4. Run the project with `npm start`
-
 ### Continued development
 
 Below are some improvements that I may make in the future.
@@ -127,12 +120,8 @@ Below are some improvements that I may make in the future.
 - Put cart on firebase.
 - Improve global css.
 - imporve button component add add to cart to it and maybe go to checkout.
-- Improve empty cart checkout error message.
-- Make an overlay that tells the user that the marketing monkeys are still working on creating the social media websites. Maybe add a gif of them doing this.
-- Improve image alts.
 - Add a message or animation to confirm item is added to cart.
 - Put the number of items animation next to cart symbol.
-- Learn about using variables in css modules. Read the documentation and guides to see how I can improve this.
 - Make responsive for bigger screen sizes. At 4k it looks bad. Make it scale up to 8k.
 - Improve invalid url error message.
 - Improve checkout error message active styling. Look at emailjs login for inspiration.

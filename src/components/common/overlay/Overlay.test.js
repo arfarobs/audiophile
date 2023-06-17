@@ -15,6 +15,9 @@ const mockState = {
 		showSubmissionError: false,
 		showSignIn: false,
 		showMessage: false
+	},
+	checkout: {
+		formIsSubmitting: false
 	}
 };
 
@@ -60,6 +63,9 @@ describe('Overlay', () => {
 				showSubmissionError: false,
 				showSignIn: false,
 				showMessage: false
+			},
+			checkout: {
+				formIsSubmitting: false
 			}
 		};
 
@@ -80,6 +86,9 @@ describe('Overlay', () => {
 				showSubmissionError: false,
 				showSignIn: false,
 				showMessage: false
+			},
+			checkout: {
+				formIsSubmitting: false
 			}
 		};
 
@@ -100,6 +109,9 @@ describe('Overlay', () => {
 				showSubmissionError: false,
 				showSignIn: false,
 				showMessage: false
+			},
+			checkout: {
+				formIsSubmitting: false
 			}
 		};
 
@@ -120,6 +132,9 @@ describe('Overlay', () => {
 				showSubmissionError: false,
 				showSignIn: false,
 				showMessage: false
+			},
+			checkout: {
+				formIsSubmitting: false
 			}
 		};
 
@@ -140,6 +155,9 @@ describe('Overlay', () => {
 				showSubmissionError: true,
 				showSignIn: false,
 				showMessage: false
+			},
+			checkout: {
+				formIsSubmitting: false
 			}
 		};
 
@@ -160,6 +178,9 @@ describe('Overlay', () => {
 				showSubmissionError: false,
 				showSignIn: true,
 				showMessage: false
+			},
+			checkout: {
+				formIsSubmitting: false
 			}
 		};
 
@@ -180,6 +201,32 @@ describe('Overlay', () => {
 				showSubmissionError: false,
 				showSignIn: false,
 				showMessage: true
+			},
+			checkout: {
+				formIsSubmitting: false
+			}
+		};
+
+		renderOverlay(state);
+
+		const overlay = screen.getByTestId('overlay');
+
+		expect(overlay).toHaveClass('overlay show');
+	});
+
+	it('should have the show class when formIsSubmitting is true', () => {
+		const state = {
+			ui: {
+				menuIsOpen: false,
+				cartIsOpen: false,
+				showConfirmation: false,
+				showInvalidMessage: false,
+				showSubmissionError: false,
+				showSignIn: false,
+				showMessage: false,
+			},
+			checkout: {
+				formIsSubmitting: true
 			}
 		};
 
@@ -200,6 +247,9 @@ describe('Overlay', () => {
 				showConfirmation: false,
 				showInvalidMessage: false,
 				showSubmissionError: false
+			},
+			checkout: {
+				formIsSubmitting: false
 			}
 		});
 
@@ -221,6 +271,9 @@ describe('Overlay', () => {
 				showConfirmation: false,
 				showInvalidMessage: false,
 				showSubmissionError: false
+			},
+			checkout: {
+				formIsSubmitting: false
 			}
 		});
 
@@ -232,7 +285,7 @@ describe('Overlay', () => {
 		expect(store.dispatch).toHaveBeenCalledTimes(1);
 	});
 	
-	it('should dispatch toggleDhowSignIn when showSignIn is true and the overlay is clicked', async () => {
+	it('should dispatch toggleShowSignIn when showSignIn is true and the overlay is clicked', async () => {
 		const user = userEvent.setup();
 
 		const { store } = renderOverlay({
@@ -243,6 +296,9 @@ describe('Overlay', () => {
 				showInvalidMessage: false,
 				showSubmissionError: false,
 				showSignIn: true
+			},
+			checkout: {
+				formIsSubmitting: false
 			}
 		});
 
