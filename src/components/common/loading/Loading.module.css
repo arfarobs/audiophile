@@ -14,9 +14,9 @@
 
 .submit {
 	position: fixed;
-	top: 0;
-	height: 100vh;
-	background: rgba(0, 0, 0, 0.4);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .img {
