@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import Overlay from './Overlay';
 import configureStore from 'redux-mock-store';
@@ -14,14 +14,12 @@ const mockState = {
 		showInvalidMessage: false,
 		showSubmissionError: false,
 		showSignIn: false,
-		showMessage: false
-	},
-	checkout: {
-		formIsSubmitting: false
+		showMessage: false,
+		isLoading: false
 	}
 };
 
-const renderOverlay = (state = mockState) => {
+const renderOverlay = (state = mockState, location = '/') => {
 	const store = mockStore(state);
 
 	store.dispatch = jest.fn();
@@ -29,7 +27,7 @@ const renderOverlay = (state = mockState) => {
 	return{
 		...render(
 			<Provider store={store}>
-				<Overlay />
+				<Overlay testLocation={location} />
 			</Provider>
 		),
 		store
@@ -62,11 +60,9 @@ describe('Overlay', () => {
 				showInvalidMessage: false,
 				showSubmissionError: false,
 				showSignIn: false,
-				showMessage: false
+				showMessage: false,
+				isLoading: false
 			},
-			checkout: {
-				formIsSubmitting: false
-			}
 		};
 
 		renderOverlay(state);
@@ -85,11 +81,9 @@ describe('Overlay', () => {
 				showInvalidMessage: false,
 				showSubmissionError: false,
 				showSignIn: false,
-				showMessage: false
+				showMessage: false,
+				isLoading: false
 			},
-			checkout: {
-				formIsSubmitting: false
-			}
 		};
 
 		renderOverlay(state);
@@ -108,11 +102,9 @@ describe('Overlay', () => {
 				showInvalidMessage: false,
 				showSubmissionError: false,
 				showSignIn: false,
-				showMessage: false
+				showMessage: false,
+				isLoading: false
 			},
-			checkout: {
-				formIsSubmitting: false
-			}
 		};
 
 		renderOverlay(state);
@@ -131,11 +123,9 @@ describe('Overlay', () => {
 				showInvalidMessage: true,
 				showSubmissionError: false,
 				showSignIn: false,
-				showMessage: false
+				showMessage: false,
+				isLoading: false
 			},
-			checkout: {
-				formIsSubmitting: false
-			}
 		};
 
 		renderOverlay(state);
@@ -154,11 +144,9 @@ describe('Overlay', () => {
 				showInvalidMessage: false,
 				showSubmissionError: true,
 				showSignIn: false,
-				showMessage: false
+				showMessage: false,
+				isLoading: false
 			},
-			checkout: {
-				formIsSubmitting: false
-			}
 		};
 
 		renderOverlay(state);
@@ -177,11 +165,9 @@ describe('Overlay', () => {
 				showInvalidMessage: false,
 				showSubmissionError: false,
 				showSignIn: true,
-				showMessage: false
+				showMessage: false,
+				isLoading: false
 			},
-			checkout: {
-				formIsSubmitting: false
-			}
 		};
 
 		renderOverlay(state);
@@ -200,11 +186,9 @@ describe('Overlay', () => {
 				showInvalidMessage: false,
 				showSubmissionError: false,
 				showSignIn: false,
-				showMessage: true
+				showMessage: true,
+				isLoading: false
 			},
-			checkout: {
-				formIsSubmitting: false
-			}
 		};
 
 		renderOverlay(state);
@@ -214,7 +198,7 @@ describe('Overlay', () => {
 		expect(overlay).toHaveClass('overlay show');
 	});
 
-	it('should have the show class when formIsSubmitting is true', () => {
+	it('should have the show class when isLoading is true and the location is /checkout', async () => {
 		const state = {
 			ui: {
 				menuIsOpen: false,
@@ -224,17 +208,15 @@ describe('Overlay', () => {
 				showSubmissionError: false,
 				showSignIn: false,
 				showMessage: false,
+				isLoading: true
 			},
-			checkout: {
-				formIsSubmitting: true
-			}
 		};
 
-		renderOverlay(state);
+		renderOverlay(state, '/checkout');
 
 		const overlay = screen.getByTestId('overlay');
 
-		expect(overlay).toHaveClass('overlay show');
+		await waitFor(() => expect(overlay).toHaveClass('overlay show'));
 	});
 
 	it('should dispatch toggleMenuIsOpen when menuIsOpen is true and the overlay is clicked', async () => {
@@ -246,11 +228,9 @@ describe('Overlay', () => {
 				cartIsOpen: false,
 				showConfirmation: false,
 				showInvalidMessage: false,
-				showSubmissionError: false
+				showSubmissionError: false,
+				isLoading: false
 			},
-			checkout: {
-				formIsSubmitting: false
-			}
 		});
 
 		const overlay = screen.getByTestId('overlay');
@@ -270,11 +250,9 @@ describe('Overlay', () => {
 				cartIsOpen: true,
 				showConfirmation: false,
 				showInvalidMessage: false,
-				showSubmissionError: false
+				showSubmissionError: false,
+				isLoading: false
 			},
-			checkout: {
-				formIsSubmitting: false
-			}
 		});
 
 		const overlay = screen.getByTestId('overlay');
@@ -295,11 +273,9 @@ describe('Overlay', () => {
 				showConfirmation: false,
 				showInvalidMessage: false,
 				showSubmissionError: false,
-				showSignIn: true
+				showSignIn: true,
+				isLoading: false
 			},
-			checkout: {
-				formIsSubmitting: false
-			}
 		});
 
 		const overlay = screen.getByTestId('overlay');
