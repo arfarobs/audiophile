@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
+import { useLocation } from 'react-router-dom';
 
 // CSS
 import styles from './Overlay.module.css';
@@ -7,7 +8,7 @@ import styles from './Overlay.module.css';
 // Actions
 import { toggleCartIsOpen, toggleMenuIsOpen, toggleShowSignIn } from '../../../store/uiSlice';
 
-const Overlay = () => {
+const Overlay = ({testLocation}) => {
 	const { 
 		menuIsOpen, 
 		cartIsOpen, 
@@ -15,10 +16,12 @@ const Overlay = () => {
 		showInvalidMessage, 
 		showSubmissionError, 
 		showSignIn,
-		showMessage
+		showMessage,
+		isLoading
 	} = useSelector(state => state.ui);
-	const { formIsSubmitting } = useSelector(state => state.checkout);
+
 	const dispatch = useDispatch();
+	const location = testLocation || useLocation().pathname;
 
 	const handleOverlayClick = () => {
 		menuIsOpen && dispatch(toggleMenuIsOpen());
@@ -30,7 +33,8 @@ const Overlay = () => {
 		<div 
 			className={classNames(
 				styles.overlay, 
-				{[styles.show]: menuIsOpen || cartIsOpen || showConfirmation || showInvalidMessage || showSubmissionError || showSignIn || showMessage || formIsSubmitting})} 
+				{[styles.show]: menuIsOpen || cartIsOpen || showConfirmation || showInvalidMessage || showSubmissionError || showSignIn 
+					|| showMessage || isLoading && location === '/checkout'})} 
 			onClick={handleOverlayClick}
 			data-testid="overlay"
 		>
