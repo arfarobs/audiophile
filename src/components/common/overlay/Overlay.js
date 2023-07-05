@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 // CSS
 import styles from './Overlay.module.css';
@@ -40,6 +41,10 @@ const Overlay = ({testLocation}) => {
 		>
 		</div>
 	);
+};
+
+Overlay.propTypes = {
+	testLocation: PropTypes.string
 };
 
 export default Overlay;
