@@ -4,9 +4,9 @@ import classNames from 'classnames';
 import styles from './BestGear.module.css';
 
 // Images
-import mobileImage from '../../../assets/images/shared/mobile/image-best-gear.jpg';
-import tabletImage from '../../../assets/images/shared/tablet/image-best-gear.jpg';
-import desktopImage from '../../../assets/images/shared/desktop/image-best-gear.jpg';
+import mobileImage from '../../../assets/images/shared/mobile/image-best-gear.webp';
+import tabletImage from '../../../assets/images/shared/tablet/image-best-gear.webp';
+import desktopImage from '../../../assets/images/shared/desktop/image-best-gear.webp';
 
 const BestGear = () => {
 	return ( 
@@ -15,7 +15,7 @@ const BestGear = () => {
 				<source media='(min-width: 1440px)' srcSet={desktopImage} />
 				<source media='(min-width: 768px)' srcSet={tabletImage} />
 				<source media='(max-width: 767px)' srcSet={mobileImage} />
-				<img className={styles.image} src={mobileImage} alt="A man wearing the XX99 mark 2 headphones." />
+				<img className={styles.image} src={mobileImage} width="540" height="588" alt="A man wearing the XX99 mark 2 headphones." />
 			</picture>
 			<div className={styles.text}>
 				<h3 className={classNames(styles.h3, 'heading-2')}>Bringing you the 

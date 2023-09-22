@@ -18,7 +18,7 @@ const Banner = () => {
 				<source media='(min-width: 1440px)' srcSet={desktopBannerImage} />
 				<source media='(min-width: 768px)' srcSet={tabletBannerImage}/>
 				<source media='(max-width: 767px)' srcSet={mobileBannerImage} />
-				<img className={styles.image} src={mobileBannerImage} alt="XX99 Mark 2 Headphones" />
+				<img className={styles.image} src={mobileBannerImage} width="1440" height="729" alt="XX99 Mark 2 Headphones" />
 			</picture>
 			<div className={styles.bannerInfo}>
 				<p className={classNames(styles.new, 'new-product')}>New product</p>

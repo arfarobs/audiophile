@@ -10,7 +10,7 @@ module.exports = {
 		'eslint:recommended',
 		'plugin:react/recommended'
 	],
-	'ignorePatterns': ['*.css', '*.jpg', '*.svg', '*.png', '*.ttf', '*.json', '*.ico', '*.txt', '*.md', '*.html', '_redirects'],
+	'ignorePatterns': ['*.css', '*.jpg', '*.svg', '*.png', '*.ttf', '*.json', '*.ico', '*.txt', '*.md', '*.html', '_redirects', '*.webp'],
 	'overrides': [
 	],
 	'parserOptions': {
