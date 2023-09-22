@@ -35,7 +35,7 @@ const Footer = ({links}) => {
 			<div className={styles.orangeLine}></div>
 			<div className={styles.navContainer}>
 				<NavLink className={styles.logo} to={homeLink.to}>
-					<img src={homeLink.image} alt="Audiophile" title={homeLink.title} />
+					<img src={homeLink.image} width="143" height="25" alt="Audiophile" title={homeLink.title} />
 				</NavLink>
 
 				<Navigation where='footer' links={links} />
@@ -51,7 +51,7 @@ const Footer = ({links}) => {
 					{mediaIcons.map(icon => (
 						<li className={styles.icon} key={icon.title}>
 							<a href="https://github.com/arfarobs" target="_blank" rel="noreferrer">
-								<img src={icon.icon} alt={icon.title} title={icon.title} />
+								<img src={icon.icon} width="24" height="24" alt={icon.title} title={icon.title} />
 							</a>
 						</li>
 					))}
