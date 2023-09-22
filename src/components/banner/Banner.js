@@ -4,9 +4,9 @@ import classNames from 'classnames';
 import styles from './Banner.module.css';
 
 //Images
-import mobileBannerImage from '../../assets/images/home/mobile/image-header.jpg';
-import tabletBannerImage from '../../assets/images/home/tablet/image-header.jpg';
-import desktopBannerImage from '../../assets/images/home/desktop/image-hero.jpg';
+import mobileBannerImage from '../../assets/images/home/mobile/image-header.webp';
+import tabletBannerImage from '../../assets/images/home/tablet/image-header.webp';
+import desktopBannerImage from '../../assets/images/home/desktop/image-hero.webp';
 
 // Components
 import Button from '../common/button/Button';
