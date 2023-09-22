@@ -14,6 +14,8 @@ const NavItem = ({link: {to, title, thumbnail}, handleClick}) => {
 			<NavLink to={to} onClick={handleClick} className={styles.link}>
 				<img
 					className={classNames(styles.thumbnail, styles[title[0].toLowerCase() + title.slice(1) + 'Thumbnail'])}
+					width="438"
+					height="400"
 					src={thumbnail}
 					alt={title}
 				/>

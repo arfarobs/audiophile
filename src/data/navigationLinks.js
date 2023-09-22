@@ -1,6 +1,6 @@
-import headphonesThumbnail from '../assets/images/shared/desktop/image-category-thumbnail-headphones.png';
-import speakersThumbnail from '../assets/images/shared/desktop/image-category-thumbnail-speakers.png';
-import earphonesThumbnail from '../assets/images/shared/desktop/image-category-thumbnail-earphones.png';
+import headphonesThumbnail from '../assets/images/shared/desktop/image-category-thumbnail-headphones.webp';
+import speakersThumbnail from '../assets/images/shared/desktop/image-category-thumbnail-speakers.webp';
+import earphonesThumbnail from '../assets/images/shared/desktop/image-category-thumbnail-earphones.webp';
 import audiophileLogo from '../assets/images/shared/desktop/logo.svg';
 
 const navigationLinks = [

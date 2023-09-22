@@ -25,7 +25,7 @@ const Home = () => {
 					<source media='(min-width: 1440px)' srcSet={zx9Desktop} />
 					<source media='(min-width: 768px)' srcSet={zx9Tablet} />
 					<source media='(max-width: 767px)' srcSet={zx9Mobile} />
-					<img className={styles.zx9Img} src={zx9Mobile} alt="ZX9 speaker" />
+					<img className={styles.zx9Img} src={zx9Mobile} width="756" height="918" alt="ZX9 speaker" />
 				</picture>
 				<div className={styles.zx9Text}>
 					<h2 className='heading-1'>ZX9 <span className='title-span'>speaker</span></h2>
@@ -47,7 +47,7 @@ const Home = () => {
 					<source media='(min-width: 1090px)' srcSet={zx7Desktop} />
 					<source media='(min-width: 550px)' srcSet={zx7Tablet} />
 					<source media='(max-width: 549px)' srcSet={zx7Mobile} />
-					<img className={styles.zx7Img} src={zx7Mobile} alt="ZX7 speaker" />
+					<img className={styles.zx7Img} src={zx7Mobile} width="1110" height="320" alt="ZX7 speaker" />
 				</picture>
 				<div className={styles.zx7Text}>
 					<h3 className={classNames(styles.h3, 'heading-4')}>ZX7 speaker</h3>
@@ -66,7 +66,7 @@ const Home = () => {
 					<source media='(min-width: 1440px)' srcSet={yx1Desktop} />
 					<source media='(min-width: 768px)' srcSet={yx1Tablet} />
 					<source media='(max-width: 767px)' srcSet={yx1Mobile} />
-					<img className={styles.yx1Img} src={yx1Mobile} alt="YX1 earphones" />
+					<img className={styles.yx1Img} src={yx1Mobile} width="540" height="320" alt="YX1 earphones" />
 				</picture>
 				<div className={classNames(styles.yx1Text, 'radius')}>
 					<div>
