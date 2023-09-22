@@ -97,10 +97,10 @@ const Header = ({links, links: [homeLink, ...categoryLinks], testLocation}) => {
 					onClick={() => dispatch(toggleMenuIsOpen())}
 					data-testid="menuBtn"
 				>
-					<img className={styles.hamburgerIcon} src={hamburger} alt="menu" />
+					<img className={styles.hamburgerIcon} src={hamburger} width="16" height="15" alt="menu" />
 				</button>
 				<NavLink className={styles.logo} to={homeLink.to} onClick={handleLogoClick}>
-					<img src={homeLink.image} alt="Audiophile logo" />
+					<img src={homeLink.image} width="143" height="25" alt="Audiophile logo" />
 				</NavLink>
 
 				<Navigation where='header' links={links} closeMenuIfOpen={closeMenuIfOpen}/>
@@ -122,7 +122,7 @@ const Header = ({links, links: [homeLink, ...categoryLinks], testLocation}) => {
 					disabled={showConfirmation || showInvalidMessage || showSignIn || showMessage}
 					data-testid="cartBtn"
 				>
-					<img className={styles.cartIcon} src={cart} alt="cart" />
+					<img className={styles.cartIcon} width="23" height="20" src={cart} alt="cart" />
 				</button>
 
 			</div>

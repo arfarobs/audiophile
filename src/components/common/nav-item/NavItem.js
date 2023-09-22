@@ -26,6 +26,8 @@ const NavItem = ({link: {to, title, thumbnail}, handleClick}) => {
 						<img
 							className={styles.iconArrowRight}
 							src={iconArrowRight}
+							width="8"
+							height="12"
 							alt="right arrow"
 						/>
 					</div>
