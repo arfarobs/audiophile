@@ -13,16 +13,22 @@ const navigationLinks = [
 		title: 'Headphones',
 		to: 'category/headphones',
 		thumbnail: headphonesThumbnail,
+		width: 438,
+		height: 422
 	},
 	{
 		title: 'Speakers',
 		to: 'category/speakers',
 		thumbnail: speakersThumbnail,
+		width: 438,
+		height: 408
 	},
 	{
 		title: 'Earphones',
 		to: 'category/earphones',
 		thumbnail: earphonesThumbnail,
+		width: 438,
+		height: 380
 	},
 ];
 
