@@ -84,6 +84,7 @@
 
 .yx1Img {
 	width: 100%;
+	height: auto;
 }
 
 .yx1Text {
@@ -199,6 +200,12 @@
 	}
 
 	/*YX1*/
+
+	.yx1Picture {
+		height: 320px;
+		display: flex;
+		align-items: center;
+	}
 
 	.yx1Text {
 		margin-left: 2.7%;
