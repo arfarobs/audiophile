@@ -8,14 +8,14 @@ import styles from './NavItem.module.css';
 // Images
 import iconArrowRight from '../../../assets/images/shared/desktop/icon-arrow-right.svg';
 
-const NavItem = ({link: {to, title, thumbnail}, handleClick}) => {
+const NavItem = ({link: {to, title, thumbnail, width, height}, handleClick}) => {
 	return (
 		<li className={styles.li}>
 			<NavLink to={to} onClick={handleClick} className={styles.link}>
 				<img
 					className={classNames(styles.thumbnail, styles[title[0].toLowerCase() + title.slice(1) + 'Thumbnail'])}
-					width="438"
-					height="400"
+					width={width}
+					height={height}
 					src={thumbnail}
 					alt={title}
 				/>
@@ -43,6 +43,8 @@ NavItem.propTypes = {
 		to: PropTypes.string.isRequired,
 		title: PropTypes.string.isRequired,
 		thumbnail: PropTypes.string.isRequired,
+		width: PropTypes.number,
+		height: PropTypes.number
 	}).isRequired,
 };
 
